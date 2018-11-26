@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>org.apache.tomcat7</string>
+	<key>Disabled</key>
+	<false/>
+	<key>OnDemand</key>
+	<false/>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/local/tomcat7/bin/tomcat-launchd.sh</string>
+	</array>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>CATALINA_HOME</key>
+		<string>/usr/local/tomcat7</string>
+		<key>JAVA_OPTS</key>
+		<string>-Xmx1g -Djava.awt.headless=true -Dorg.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH=true 
+-Xloggc:/usr/local/tomcat7/logs/gc.log
+-XX:+UseGCLogFileRotation
+-XX:NumberOfGCLogFiles=10
+-XX:GCLogFileSize=1048576
+-XX:+PrintGCDetails
+-XX:+PrintGCTimeStamps
+-XX:+PrintGCDateStamps
+</string>
+	</dict>
+	<key>StandardErrorPath</key>
+	<string>/usr/local/tomcat7/logs/tomcat-launchd.stderr</string>
+	<key>StandardOutPath</key>
+	<string>/usr/local/tomcat7/logs/tomcat-launchd.stdout</string>
+	<key>UserName</key>
+	<string>_appserver</string>
+</dict>
+</plist>
