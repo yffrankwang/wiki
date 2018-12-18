@@ -1,5 +1,8 @@
  config
 -------------------
+### unset
+	git config --global --unset core.autocrlf
+
 ### EOL
 @see https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
 	git config --global core.autocrlf false
