@@ -179,6 +179,8 @@ An optional company name []:
 	openssl pkcs7 -print_certs -in cert.p7b
 	openssl pkcs7 -print_certs -in cert.p7b -out cert.pem
 
+### CRL
+	openssl crl -inform DER -text -noout -in my.crl
 
 ### connect test
 	echo -n | openssl s_client -connect www.google.com:443
