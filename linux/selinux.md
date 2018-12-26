@@ -1,6 +1,13 @@
 ## status
 	# sestatus
 
+## disable temporary
+	setenforce 0
+
+## disable permanently
+	cp /etc/selinux/config /tmp/selinux.conf
+	sed -e 's/SELINUX=enforcing/SELINUX=disabled/' /tmp/selinux.conf > /etc/selinux/config
+
 ## config
 	# /etc/selinux/config
 
