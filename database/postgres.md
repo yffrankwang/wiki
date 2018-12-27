@@ -1,10 +1,20 @@
+### error message
+C:\Program Files\PostgreSQL\9.?\data\postgresql.conf
+
+	lc_messages = 'en_US'
+
+
 ### backup
 	pg_dump database_name > backup.sql
-	
 	pg_dump -Ft database_name > backup.tar
+	pg_dump -Fc database_name > backup.dmp
+
 
 ### restore
-	pg_restore -d database_name -Ft -c ./backup.tar
+	psql database_name < backup.sql
+	pg_restore -d database_name -Ft -c backup.tar
+	pg_restore -d database_name -Fc -c backup.dmp
+
 
 #### select table rows
 	SELECT relname, reltuples AS approximate_row_count FROM pg_class order by relname
