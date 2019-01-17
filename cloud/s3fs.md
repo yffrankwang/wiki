@@ -37,3 +37,25 @@
 ### Log
 	$ sudo tail /var/log/messages | grep s3fs
 
+### Trouble shooting (Failed to set public-read ACL)
+	> cp: cannot create regular file ‘1.txt’: Operation not permitted
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<Error><Code>AccessDenied</Code><Message>Access Denied</Message></Error>
+	
+	Manage public access control lists (ACLs) for this bucket
+
+AWS Console / S3 / <Bucket Name> / Permissions
+
+Uncheck all recommended options:
+
+Manage public access control lists (ACLs) for this bucket
+Access control lists (ACLs) are used to grant basic read/write permissions to other AWS accounts.
+□　Block new public ACLs and uploading public objects (Recommended)
+□　Remove public access granted through public ACLs (Recommended)
+
+Manage public bucket policies for this bucket
+Bucket policies use JSON-based access policy language to manage advanced permission to your Amazon S3 resources.
+□　Block new public bucket policies (Recommended)
+□　Block public and cross-account access if bucket has public policies (Recommended) 
+
