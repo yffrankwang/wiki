@@ -107,6 +107,12 @@
 	git submodule update --init --recursive --remote
 
 
+ history
+-------------------------------------
+### find file
+	git log --all --full-history -- **/filename.ext
+
+
  windows
 -------------------------------------
 ### chmod
