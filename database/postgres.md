@@ -3,6 +3,10 @@ C:\Program Files\PostgreSQL\9.?\data\postgresql.conf
 
 	lc_messages = 'en_US'
 
+### create
+	CREATE USER testuser PASSWORD 'testpass';
+	CREATE DATABASE testdb WITH OWNER = testuser ENCODING = 'UTF-8';
+	GRANT ALL ON DATABASE testdb TO testuser;
 
 ### backup
 	pg_dump database_name > backup.sql
