@@ -42,3 +42,12 @@ https://devcenter.heroku.com/articles/heroku-postgresql#using-the-cli
 
 ### WebRunner
 https://devcenter.heroku.com/articles/java-webapp-runner
+
+### Config Environment Var
+https://devcenter.heroku.com/articles/config-vars
+
+> heroku config
+> heroku config:get GITHUB_USERNAME
+> heroku config:set GITHUB_USERNAME=joesmith
+> heroku config:unset GITHUB_USERNAME
+
