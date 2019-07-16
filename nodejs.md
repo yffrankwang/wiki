@@ -1,3 +1,10 @@
+ npm config
+---------------
+	npm config list -l
+	npm config --global set prefix "C:\Develop\SDK\nodejs.npm"
+	npm config --global set cache "C:\Develop\SDK\nodejs.npm\cache"
+
+
  npm err refusing to delete npm.cmd
 ------------------------------------
 ### error
