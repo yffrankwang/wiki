@@ -20,6 +20,8 @@
     SET foreign_key_checks = 0;
     SET foreign_key_checks = 1;
 
+### pipe as concat
+    SET sql_mode='PIPES_AS_CONCAT';
 
 ### max allowed packet
 
