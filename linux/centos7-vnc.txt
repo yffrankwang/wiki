@@ -37,8 +37,8 @@ ExecStop=/bin/sh -c '/usr/bin/vncserver -kill %i > /dev/null 2>&1 || :'
 WantedBy=multi-user.target
 ~~~~
 
-Repace ExecStop:
-	ExecStart=/usr/sbin/runuser -l <USER> -c "/usr/bin/vncserver %i -geometry 1366x760"
+Repace ExecStart:
+	ExecStart=/usr/sbin/runuser -l <USER> -c "/usr/bin/vncserver %i -geometry 1366x768"
 
 
 ## Start
