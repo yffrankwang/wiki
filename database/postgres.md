@@ -13,6 +13,12 @@ C:\Program Files\PostgreSQL\9.?\data\postgresql.conf
 	pg_dump -Ft database_name > backup.tar
 	pg_dump -Fc database_name > backup.dmp
 
+	-- schema-only
+	pg_dump -U postgres -s foo > schema-only.sql
+
+	-- data-only
+	pg_dump -U postgres -a foo > data-only.sql
+
 
 ### restore
 	psql database_name < backup.sql
