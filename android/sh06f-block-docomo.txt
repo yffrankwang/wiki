@@ -1,0 +1,44 @@
+pm block com.nttdocomo.android.accountauthenticator
+pm block com.nttdocomo.android.apnmng
+pm block com.nttdocomo.android.applicationmanager
+pm block com.nttdocomo.android.areamail
+pm block com.nttdocomo.android.atf
+pm block com.nttdocomo.android.cloudset
+pm block com.nttdocomo.android.databackup
+pm block com.nttdocomo.android.dcmvoicerecognition
+pm block com.nttdocomo.android.dhome
+pm block com.nttdocomo.android.docomo_market
+pm block com.nttdocomo.android.docomoset
+pm block com.nttdocomo.android.felicaremotelock
+pm block com.nttdocomo.android.fota
+pm block com.nttdocomo.android.iconcier_contents
+pm block com.nttdocomo.android.idmanager
+pm block com.nttdocomo.android.initialization
+pm block com.nttdocomo.android.lac
+pm block com.nttdocomo.android.mediaplayer
+pm block com.nttdocomo.android.osv
+pm block com.nttdocomo.android.pf.dcmippushaggregator
+pm block com.nttdocomo.android.pf.dcmwappush
+pm block com.nttdocomo.android.remotelock
+pm block com.nttdocomo.android.rwpushcontroller
+pm block com.nttdocomo.android.schedulememo
+pm block com.nttdocomo.android.screenlockservice
+pm block com.nttdocomo.android.sdcardbackup
+pm block com.nttdocomo.android.settings.lac
+pm block com.nttdocomo.android.socialphonebook
+pm block com.nttdocomo.android.store
+pm block com.nttdocomo.android.voiceeditor
+pm block com.nttdocomo.android.voicesearch
+pm block com.nttdocomo.android.wipe
+pm block com.nttdocomo.mmb.android.MmbFcBrowMw.res
+pm block com.nttdocomo.mmb.android.MmbSetting
+pm unblock com.nttdocomo.osaifu.tsmproxy
+pm unblock com.threelm.dm.app.docomo
+pm unblock jp.co.nttdocomo.Koe_no_Takuhaibin_pi
+pm unblock jp.co.nttdocomo.bridgelauncher
+pm unblock jp.co.nttdocomo.lcsappsub
+pm unblock jp.co.nttdocomo.saigaiban
+
+
+## required for TV
+#pm block com.nttdocomo.mmb.android.mmbsv.process
