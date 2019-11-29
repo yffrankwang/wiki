@@ -182,12 +182,25 @@ An optional company name []:
 ### CRL
 	openssl crl -inform DER -text -noout -in my.crl
 
+### print ciphers
+	openssl ciphers -V 'ALL'
+
 ### connect test
 	echo -n | openssl s_client -connect www.google.com:443
 	echo B | openssl s_client -ssl3 -connect www.google.com:443
 
+### send http request
+~~~
+openssl s_client -crlf -connect www.example.com:443 -servername www.example.com <<EOF
+GET / HTTP/1.1
+Host: www.example.com
+User-Agent: openssl
+Accept: */*
 
-### print ciphers
-	openssl ciphers -V 'ALL'
+GET / HTTP/1.1
+Host: www2.example.com
+User-Agent: openssl
+Accept: */*
 
-
+EOF
+~~~

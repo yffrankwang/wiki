@@ -1,5 +1,23 @@
- Checking Session Cache Using OpenSSL
---------------------------------------
+## Send Continus Request
+
+~~~
+openssl s_client -crlf -connect www.example.com:443 -servername www.example.com <<EOF
+GET / HTTP/1.1
+Host: www.example.com
+User-Agent: openssl
+Accept: */*
+
+GET / HTTP/1.1
+Host: www2.example.com
+User-Agent: openssl
+Accept: */*
+
+EOF
+~~~
+
+
+
+## Checking Session Cache Using OpenSSL
 
 ### Request #1
 
