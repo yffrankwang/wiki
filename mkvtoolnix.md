@@ -1,5 +1,5 @@
 ### install
-	sudo apt install mkvtoolinx
+	sudo apt install mkvtoolnix
 
 ### view mkv info
 	mkvinfo xxx.mkv

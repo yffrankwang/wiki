@@ -148,9 +148,9 @@
 <setting id="org.eclipse.php.formatter.core.formatter.insert_space_before_closing_paren_in_parenthesized_expression" value="false"/>
 <setting id="org.eclipse.php.formatter.core.formatter.insert_space_before_closing_paren_in_switch" value="false"/>
 <setting id="org.eclipse.php.formatter.core.formatter.insert_space_before_closing_paren_in_while" value="false"/>
-<setting id="org.eclipse.php.formatter.core.formatter.insert_space_before_colon_in_case" value="true"/>
+<setting id="org.eclipse.php.formatter.core.formatter.insert_space_before_colon_in_case" value="false"/>
 <setting id="org.eclipse.php.formatter.core.formatter.insert_space_before_colon_in_conditional" value="true"/>
-<setting id="org.eclipse.php.formatter.core.formatter.insert_space_before_colon_in_default" value="true"/>
+<setting id="org.eclipse.php.formatter.core.formatter.insert_space_before_colon_in_default" value="false"/>
 <setting id="org.eclipse.php.formatter.core.formatter.insert_space_before_coloncolon_in_field_access" value="false"/>
 <setting id="org.eclipse.php.formatter.core.formatter.insert_space_before_coloncolon_in_method_invocation" value="false"/>
 <setting id="org.eclipse.php.formatter.core.formatter.insert_space_before_comma_in_array_creation" value="false"/>
