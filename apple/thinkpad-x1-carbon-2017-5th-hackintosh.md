@@ -55,7 +55,7 @@ sudo mount -t msdos /dev/disk1s1 /Volumes/efi
 ~~~
 	git clone https://github.com/B0hrer/Thinkpad-x1c-5th-gen-Hackintosh.git
 	sudo cp -a Thinkpad-x1c-5th-gen-Hackintosh/EFI/* /Volumes/efi/EFI/
-	sudo rm /Volumes/efi/EFI/CLOVER/ACPI/patched/*
+	sudo rm /Volumes/efi/EFI/CLOVER/ACPI/patched/DSDT.aml
 ~~~
 
 ## BIOS settings
