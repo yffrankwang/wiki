@@ -3,8 +3,8 @@
 ## yum install expect
 
 cd /etc/nginx/conf.d/
-mv lets.crt lets.crt.old
-mv lets.key lets.key.old
+mv lets.crt.pem lets.crt.pem.old
+mv lets.key.pem lets.key.pem.old
 
 expect -c '
 set timeout 5
@@ -14,9 +14,9 @@ send "XXXXX\n"
 expect "sftp>"
 send "cd /etc/nginx/conf.d/\n"
 expect "sftp>"
-send "get lets.crt\n"
+send "get lets.crt.pem\n"
 expect "sftp>"
-send "get lets.key\n"
+send "get lets.key.pem\n"
 expect "sftp>"
 send "bye\n"
 interact
@@ -24,7 +24,7 @@ exit 0
 '
 
 ERR="Failed to get lets ssl from xxxx"
-if [ -e lets.crt ] && [ -e lets.key ]; then
+if [ -e lets.crt.pem ] && [ -e lets.key.pem ]; then
   ERR="Succeeded to get lets ssl from xxxx"
   systemctl reload nginx
 fi
