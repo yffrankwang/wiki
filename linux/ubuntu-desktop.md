@@ -159,7 +159,7 @@ echo '[[ -f ~/.Xmodemap ]] && xmodmap ~/.Xmodmap' >> ~/.xinitrc
 
 evaluation forever
 ~~~
-echo 'rm ~/.config/bcompare/registry.dat' >> .xinitrc
+echo 'rm ~/.config/bcompare/registry.dat' >> .xinputrc
 ~~~
 
 ### google calendar
