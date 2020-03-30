@@ -20,3 +20,7 @@ remove all subtitles (copy none)
 	mkvmerge -o output.mkv --no-attachments input.mkv
 
 
+### remove title
+	for /r %%g in (*.mkv) do (mkvpropedit --tags all:"" --delete title "%%~g")
+	
+	for /r %g in (*.mkv) do (mkvpropedit --tags all:"" --delete title "%~g")
