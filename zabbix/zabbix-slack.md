@@ -24,14 +24,14 @@ Installation
 
 ### The script itself
 
-The ["slack.sh" script](https://raw.github.com/foolite/panda-wiki/master/zabbix/slack.sh) needs to be placed in the "AlertScriptsPath" directory that is specified within the Zabbix servers' configuration file (zabbix_server.conf) and must be executable by the user (usually "zabbix") running the zabbix_server binary on the Zabbix server before restarting the Zabbix server software:
+The ["slack.sh" script](https://raw.github.com/pandafw/panda-wiki/master/zabbix/slack.sh) needs to be placed in the "AlertScriptsPath" directory that is specified within the Zabbix servers' configuration file (zabbix_server.conf) and must be executable by the user (usually "zabbix") running the zabbix_server binary on the Zabbix server before restarting the Zabbix server software:
 
 	[root@zabbix ~]# grep AlertScriptsPath /etc/zabbix/zabbix_server.conf
 	### Option: AlertScriptsPath
 	AlertScriptsPath=/usr/lib/zabbix/alertscripts
 
 	[root@zabbix ~]# cd /usr/lib/zabbix/alertscripts
-	[root@zabbix ~]# wget https://raw.github.com/foolite/panda-wiki/master/zabbix/slack.sh
+	[root@zabbix ~]# wget https://raw.github.com/pandafw/panda-wiki/master/zabbix/slack.sh
 	[root@zabbix ~]# chmod a+x slack.sh
 
 Make sure that you specify your correct Slack.com incoming web-hook URL and feel free to edit the sender user name at the top of the script:
