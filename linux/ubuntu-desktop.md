@@ -157,11 +157,6 @@ echo '[[ -f ~/.Xmodemap ]] && xmodmap ~/.Xmodmap' >> ~/.xinitrc
 	wget http://www.scootersoftware.com/bcompare-4.0.0.18847_i386.deb
 	sudo dpkg -i bcompare*
 
-evaluation forever
-~~~
-echo 'rm ~/.config/bcompare/registry.dat' >> .xinputrc
-~~~
-
 ### google calendar
 	sudo add-apt-repository ppa:atareao/atareao
 	sudo apt-get update

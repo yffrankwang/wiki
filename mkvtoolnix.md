@@ -24,3 +24,5 @@ remove all subtitles (copy none)
 	for /r %%g in (*.mkv) do (mkvpropedit --tags all:"" --delete title "%%~g")
 	
 	for /r %g in (*.mkv) do (mkvpropedit --tags all:"" --delete title "%~g")
+	
+	find . -name '*.mkv' -exec mkvpropedit --tags all:"" --delete title {} \;

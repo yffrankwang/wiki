@@ -1,3 +1,9 @@
+http://spiqe.net/p76.html
+
+### Remote support service
+adb shell pm uninstall -k --user 0 com.rsupport.rsperm.ntt
+
+
 ### File Commander
 adb shell pm uninstall -k --user 0 com.mobisystems.fileman
 
@@ -17,41 +23,28 @@ adb shell pm uninstall -k --user 0 com.nttdocomo.android.dcmvoicerecognition
 ### Remote wipe
 adb shell pm uninstall -k --user 0 com.nttdocomo.android.wipe
 
-package:com.nttdocomo.android.anmane2
-
 ### ドコモバックアップ
 adb shell pm uninstall -k --user 0 com.nttdocomo.android.databackup
-
-package:com.nttdocomo.android.screenlockservice
-package:com.nttdocomo.android.osv.res.overlay_305
 
 ### iコンシェル
 adb shell pm uninstall -k --user 0 com.nttdocomo.android.iconcier
 adb shell pm uninstall -k --user 0 com.nttdocomo.android.iconcier_contents
 
-package:com.sonyericsson.android.servicemenu.product.res.overlay.docomo
-
 ### Scuedule & Memo
 adb shell pm uninstall -k --user 0 com.nttdocomo.android.schedulememo
-
-package:com.nttdocomo.android.pf.dcmwappush
-package:com.nttdocomo.android.gs.utility
 
 ### EMOJI
 adb shell pm uninstall -k --user 0 jp.co.omronsoft.android.decoemojimanager_docomo
 
-package:jp.co.nttdocomo.anshinmode
-package:com.nttdocomo.android.docomoset
+### docomo service
+adb shell pm uninstall -k --user 0 com.nttdocomo.android.docomoset
 
 ### docomo アプリケーションマネージャ
 adb shell pm uninstall -k --user 0 com.nttdocomo.android.applicationmanager
 
-package:com.nttdocomo.android.apnsw
-
 ### docomo LIVE UX
 adb shell pm uninstall -k --user 0 com.nttdocomo.android.dhome
 adb shell pm uninstall -k --user 0 com.nextbit.app
-
 
 ### D Market
 adb shell pm uninstall -k --user 0 com.nttdocomo.android.store
@@ -66,27 +59,20 @@ adb shell pm uninstall -k --user 0 com.nttdocomo.android.atf
 adb shell pm uninstall -k --user 0 jp.co.nttdocomo.lcsappsub
 adb shell pm uninstall -k --user 0 jp.co.nttdocomo.lcsapp
 
-package:com.nttdocomo.android.osv
-package:com.nttdocomo.android.keyguard
-
 ### App crash report
 adb shell pm uninstall -k --user 0 com.nttdocomo.android.bugreport
-
-package:com.nttdocomo.android.tapandpay
-package:com.nttdocomo.android.pf.dcmippushaggregator
-package:com.sonyericsson.docomo.settings
 
 ### docomoクラウド
 adb shell pm uninstall -k --user 0 com.nttdocomo.android.cloudset
 
-package:jp.co.nttdocomo.bridgelauncher
-
-
 ### ドコモアカウント認証
 adb shell pm uninstall -k --user 0 com.nttdocomo.android.accountauthenticator
 
-package:com.nttdocomo.android.idmanager
-package:com.nttdocomo.android.voiceeditor
+### dアカウント設定
+adb shell pm uninstall -k --user 0 com.nttdocomo.android.idmanager
+
+### Moji-Henshu
+adb shell pm uninstall -k --user 0 com.nttdocomo.android.voiceeditor
 
 ### メディアプレーヤ
 adb shell pm uninstall -k --user 0 com.nttdocomo.android.mediaplayer
@@ -110,11 +96,30 @@ adb shell pm uninstall -k --user 0 com.nttdocomo.android.areamail
 ### お任せロック
 adb shell pm uninstall -k --user 0 com.nttdocomo.android.remotelock
 
+
+package:com.nttdocomo.android.anmane2
+package:com.nttdocomo.android.screenlockservice
+package:com.nttdocomo.android.osv.res.overlay_305
+package:com.sonyericsson.android.servicemenu.product.res.overlay.docomo
+package:com.nttdocomo.android.pf.dcmwappush
+package:com.nttdocomo.android.gs.utility
+package:jp.co.nttdocomo.anshinmode
+package:com.nttdocomo.android.apnsw
+package:com.nttdocomo.android.osv
+package:com.nttdocomo.android.keyguard
+package:com.nttdocomo.android.tapandpay
+package:com.nttdocomo.android.pf.dcmippushaggregator
+package:com.sonyericsson.docomo.settings
+package:jp.co.nttdocomo.bridgelauncher
 package:com.sonymobile.docomoemoji.license
 
 
-
+ SONY
 -------------------------------------------------
+### What's New
+adb shell pm uninstall -k --user 0 com.sonymobile.entrance
+
+
 package:com.sonymobile.whitebalance
 package:com.sonymobile.intelligent.iengine
 package:com.sonymobile.keyboardlauncher.res.overlay_305
@@ -212,10 +217,6 @@ package:com.sonyericsson.warrantytime
 package:com.sonyericsson.android.contactpicker3
 package:com.sonyericsson.textinput.uxp.dictionaries
 package:com.sonymobile.keyboardhostapp
-
-### What's New
-adb shell pm uninstall -k --user 0 com.sonymobile.entrance
-
 package:com.sonymobile.devicesecurity.service
 package:com.sonyericsson.devicemonitor
 package:com.sonymobile.smallapps.calc
@@ -336,7 +337,3 @@ package:com.sonymobile.simlock.service
 package:com.sony.tvsideview.videoph
 package:com.sonymobile.smallapps.timer
 package:com.sonyericsson.android.addoncamera.artfilter
-
-
-## required for TV
-#pm block com.nttdocomo.mmb.android.mmbsv.process

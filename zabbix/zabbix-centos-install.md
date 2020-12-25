@@ -15,10 +15,10 @@ zabbix server
 
 	sudo rpm -ivh http://repo.zabbix.com/zabbix/2.4/rhel/6/x86_64/zabbix-release-2.4-1.el6.noarch.rpm
 	sudo yum install zabbix-server-mysql zabbix-web-mysql zabbix-web-japanese zabbix-agent
-	cd /usr/share/doc/zabbix-server-mysql-2.4.?/create
 
 
 ## mysql config
+	cd /usr/share/doc/zabbix-server-mysql-2.4.?/create
 	mysql -u root <<EOF
 		create database zabbix character set utf8 collate utf8_bin;
 		grant all privileges on zabbix.* to zabbix@localhost identified by 'zabbix';

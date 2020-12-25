@@ -39,7 +39,7 @@
  tag
 ------------------------- 
 ### create lightweight tag
-	git tag <name>
+	git tag <name> [commit]
 
 ### create annotated tag
 	git tag -a <name> -m <message>
@@ -97,7 +97,14 @@
  filter-branch
 ------------------------------------
 ### remove file from history
-	git filter-branch --index-filter "git rm -rf --cached --ignore-unmatch path_to_file" HEAD
+	git filter-branch --prune-empty --index-filter "git rm -rf --cached --ignore-unmatch path_to_file" HEAD
+
+
+### rename directory
+	git filter-branch --prune-empty --tree-filter "git mv old new" HEAD
+
+### remove empty commits
+	git filter-branch --prune-empty HEAD
 
 
  submodule

@@ -7,7 +7,7 @@ First, create a file which will be used as swap space:
 
 If the fallocate utility is not available on your system or you get an error message saying fallocate failed: Operation not supported, use the following command to create the swap file:
 
-	sudo dd if=/dev/zero of=/swapfile bs=1024 count=2097152
+	sudo dd if=/dev/zero of=/swapfile bs=1048576 count=2048
 
 Ensure that only the root user can read and write the swap file:
 
@@ -22,8 +22,12 @@ Run the following command to activate the swap:
 	sudo swapon /swapfile
 
 Make the change permanent by opening the /etc/fstab file:
-
+centos:
 	echo '/swapfile swap swap defaults 0 0' | sudo tee -a /etc/fstab
+
+ubuntu:
+	echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
 
 Verify that the swap is active by using either the swapon or the free command as shown below:
 

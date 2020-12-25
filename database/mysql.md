@@ -1,5 +1,4 @@
 #### user
-
 	CREATE USER 'user'@'%' IDENTIFIED BY 'password';
 	GRANT ALL PRIVILEGES ON dbname-xxxx.* TO 'user'@'%';
 	GRANT ALL PRIVILEGES ON dbname-xxxx.* TO 'user'@'%' IDENTIFIED BY 'password';
@@ -7,24 +6,28 @@
 
 
 #### database
-    create database <dbname> default character set utf8 collate utf8_general_ci;
-    ALTER SCHEMA <dbname>  DEFAULT COLLATE utf8_general_ci;
+	create database <dbname> default character set utf8 collate utf8_general_ci;
+	ALTER SCHEMA <dbname>  DEFAULT COLLATE utf8_general_ci;
+
+
+#### dump
+	mysqldump -hlocalhost -uuser -ppass dbname | gzip > dbname.sql.tgz
+	mysqldump --nodata -hlocalhost -uuser -ppass dbname > dbname.schema.sql
 
 #### select table rows  
-    SELECT table_name, table_rows 
-         FROM INFORMATION_SCHEMA.TABLES 
-         WHERE TABLE_SCHEMA = 'schema';
+	SELECT table_name, table_rows FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'schema';
 
- 
-### disable foreign key check  
-    SET foreign_key_checks = 0;
-    SET foreign_key_checks = 1;
+
+### disable/enable foreign key check  
+	SET foreign_key_checks = 0;
+	SET foreign_key_checks = 1;
+
 
 ### pipe as concat
-    SET sql_mode='PIPES_AS_CONCAT';
+	SET sql_mode='PIPES_AS_CONCAT';
+
 
 ### max allowed packet
-
 mysql> show variables like 'max_allowed_packet';
 
 	+--------------------+---------+
@@ -38,6 +41,7 @@ change settings of my.cnf:
 	[mysqld]
 	max_allowed_packet=16MB
 	innodb_file_per_table=1
+
 
 ### “Incorrect string value” when trying to insert UTF-8 into MySQL via JDBC?
     @see http://stackoverflow.com/questions/10957238/incorrect-string-value-when-trying-to-insert-utf-8-into-mysql-via-jdbc

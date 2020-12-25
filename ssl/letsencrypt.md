@@ -20,7 +20,7 @@
 	ll /etc/letsencrypt/live/letsencrypt.jp/
 
 ### auto renew (every 2 month, day 1, AM 6:00)
-	echo '0 6 1 2,4,6,8,10,12 * /root/certbot-auto renew --force-renew && /bin/systemctl reload nginx' > lets.cron
+	echo '0 6 1 2,4,6,8,10,12 * /root/certbot-auto renew --no-self-upgrade --force-renew && /bin/systemctl reload nginx' > lets.cron
 	crontab lets.cron
 
 
@@ -36,4 +36,16 @@ again with --no-bootstrap.
 ~~~
 
 	./certbot-auto --debug
-	
+
+### Amazon EC2 Linux 2
+
+	sudo wget -r --no-parent -A 'epel-release-*.rpm' http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/
+	sudo rpm -Uvh dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-*.rpm
+	sudo yum-config-manager --enable epel*
+	sudo yum repolist all
+	sudo yum install -y certbot
+
+### Error: No module named cryptography
+
+	sudo pip install -U pip virtualenv==15.1.0 cryptography
+	sudo rm -rf /opt/eff.org/certbot/

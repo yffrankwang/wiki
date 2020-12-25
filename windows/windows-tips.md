@@ -55,7 +55,15 @@ And startup folder all users:
 
 	Lpksetup /u
 
+
 ### RemoteDesktop "CredSSP encryption oracle remediation" error
 https://support.microsoft.com/en-us/help/4295591/credssp-encryption-oracle-remediation-error-when-to-rdp-to-azure-vm
 
 > REG ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\CredSSP\Parameters\ /v AllowEncryptionOracle /t REG_DWORD /d 2
+
+
+### Change DNS server with command prompt
+
+	netsh
+	interface ip show config
+	interface ip set dns "Ethernet0" static 8.8.8.8

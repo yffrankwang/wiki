@@ -1,14 +1,15 @@
 ### wp-config.php
 
-	/**
-	 * disable automatic update
-	 */
+	/* disable automatic update */
 	define( 'AUTOMATIC_UPDATER_DISABLED', true );
 
-	/**
-	 *
-	 */
+	/*  */
 	define('FS_METHOD', 'direct');
+
+	/* LoadBalancer SSL */
+	if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+		$_SERVER['HTTPS'] = 'on';
+	}
 
 ### Fatal error: Uncaught phpmailerException: Invalid address: wordpress@_ 
 
