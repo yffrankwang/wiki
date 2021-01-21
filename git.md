@@ -57,6 +57,9 @@
 ### checkout tag
 	git checkout <name>
 
+### pull tag
+	git pull --tags
+
 ### push tag
 	git push origin <name>
 	git push origin --tags
