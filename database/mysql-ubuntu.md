@@ -1,3 +1,17 @@
+## install server
+
+	sudo apt update
+	sudo apt install mysql-server
+	sudo mysql_secure_installation
+
+
+## enable root login
+
+	sudo mysql -uroot
+	ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'password';
+	FLUSH PRIVILEGES;
+
+
 #### systemd mysql won't stop
 
 https://askubuntu.com/questions/615129/systemd-mysql-wont-stop

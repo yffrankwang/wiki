@@ -11,14 +11,14 @@
 @see https://git-scm.com/docs/git-credential-store  
 @see https://git-scm.com/book/ja/v2/Git-のさまざまなツール-認証情報の保存  
 
-	$ git config --global credential.helper cache
-	$ git config --global credential.helper store
+	git config --global credential.helper cache
+	git config --global credential.helper store
 
 ### disable windows credential manager
 @see https://stackoverflow.com/questions/37182847/how-to-disable-git-credential-manager-for-windows
 
-	$ git config --system credential.helper store
-	$ git config --system --unset credential.helper
+	git config --system credential.helper store
+	git config --system --unset credential.helper
 
 
  branch
