@@ -1,41 +1,53 @@
 ### timezone
-	sudo timedatectl set-timezone Asia/Tokyo
+```sh
+sudo timedatectl set-timezone Asia/Tokyo
+```
 
 ### shortcut location
-	cd /usr/share/applications
+```sh
+cd /usr/share/applications
+```
 
 ### lightdm background location
-	cd /usr/share/backgrounds
+```sh
+cd /usr/share/backgrounds
+```
 
 ### system clock
 > @see https://help.ubuntu.com/community/UbuntuTime
 > UTC=yes
 
-	sudo sed -i 's/UTC=no/UTC=yes/' /etc/default/rcS
-	timedatectl set-local-rtc 0 --adjust-system-clock
-
+```sh
+sudo sed -i 's/UTC=no/UTC=yes/' /etc/default/rcS
+timedatectl set-local-rtc 0 --adjust-system-clock
+```
 
 ### grub-customizer
-	sudo add-apt-repository ppa:danielrichter2007/grub-customizer
-	sudo apt-get update
-	sudo apt-get install grub-customizer
+```sh
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+sudo apt update
+sudo apt install grub-customizer
+```
 
 ### boot-repair
-	sudo add-apt-repository ppa:yannubuntu/boot-repair
-	sudo apt-get update
-	sudo apt-get install boot-repair boot-info
-
+```sh
+sudo add-apt-repository ppa:yannubuntu/boot-repair
+sudo apt update
+sudo apt install boot-repair boot-info
+```
 
 ### dir location settings
 > XDG_DESKTOP_DIR="$HOME/Desktop"
 
-	cat ~/.config/user-dirs.dirs
-
+```sh
+cat ~/.config/user-dirs.dirs
+```
 
 ### update
-	sudo apt-get update
-	sudo apt-get upgrade
-
+```sh
+sudo apt update
+sudo apt upgrade
+```
 
 ### disable guest session
 ~~~
@@ -47,20 +59,22 @@ allow-guest=false
 
 
 ### install exfat, hfs+
-sudo apt-get install exfat-utils exfat-fuse hfsplus
-
+```sh
+sudo apt install exfat-utils exfat-fuse hfsplus
+```
 
 ### disable crash report
 > enabled=0
 
-	sudo nano /etc/default/apport
-
+```sh
+sudo nano /etc/default/apport
+```
 
 
 ### GTK TreeView Key Config
 > @see http://stackoverflow.com/questions/4747264/is-it-possible-to-use-arrow-keys-alone-to-expand-tree-node-in-package-explorer-i
 
-~~~
+```sh
 echo '
 binding "gtk-binding-tree-view" {
     bind "j"        { "move-cursor" (display-lines, 1) }
@@ -79,10 +93,10 @@ binding "gtk-binding-tree-view" {
 }
 class "GtkTreeView" binding "gtk-binding-tree-view"
 ' >> ~/.gtkrc-2.0
-~~~
+```
 
 ### GTK Scrollbar
-~~~
+```sh
 echo '
 style "myscrollbar"
 {
@@ -90,11 +104,12 @@ style "myscrollbar"
 }
 class "GtkScrollbar" style "myscrollbar"
 ' >>  ~/.gtkrc-2.0
-~~~
+```
 
 ### Key Remapping ()
-
+```sh
 sudo nano /etc/default/keyboard
+```
 
 Left Ctrl <-> CapsLock
 ~~~
@@ -108,31 +123,40 @@ No CapsLock
 
 
 ### Key Remapping (Right Alt -> Menu)
-~~~
+```sh
 echo "
 ! Change Alt_R to Menu
 keycode 0x6c = Menu
 " > ~/.Xmodmap
 
 echo '[[ -f ~/.Xmodemap ]] && xmodmap ~/.Xmodmap' >> ~/.xinitrc
-~~~
+```
 
 
 ### IME
-	sudo apt-get install ibus
+```sh
+sudo apt install ibus
+```
 
 #### Chinese Pinyin
-	#http://nakamura-hiroshi.com/ubuntu/2011/05/ubuntu-1104-1.php
-	sudo apt-get install ibus-pinyin ibus-libpinyin
+http://nakamura-hiroshi.com/ubuntu/2011/05/ubuntu-1104-1.php
+
+```sh
+sudo apt install ibus-pinyin ibus-libpinyin
+```
 
 #### Japanese Anthy
-	sudo apt-get install ibus-anthy
+```sh
+sudo apt install ibus-anthy
+```
 
 #### Japanese Mozc
-	sudo apt-get install ibus-mozc
+```sh
+sudo apt install ibus-mozc
+```
 
-	# > Settings -> Language Support -> Install / Remove Languages ...
-	# > Settings -> Keyboard Input Methods ...
+> Settings -> Language Support -> Install / Remove Languages ...
+> Settings -> Keyboard Input Methods ...
 
 
 
@@ -140,150 +164,208 @@ echo '[[ -f ~/.Xmodemap ]] && xmodmap ~/.Xmodmap' >> ~/.xinitrc
 ------------------------------------
 
 ### file manager
-	sudo apt-get install doublecmd-gtk doublecmd-help-en
+```sh
+sudo apt install doublecmd-gtk doublecmd-help-en
+```
 
 ### rar
-	sudo apt-get install rar unrar
+```sh
+sudo apt install rar unrar
+```
 
 ### 7zip
-	sudo apt-get install p7zip-full
+```sh
+sudo apt install p7zip-full
+```
 
 ### usb creator
-	sudo apt-get install usb-creator-gtk
+```sh
+sudo apt install usb-creator-gtk
+```
 
 ### chrome
-	wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
-	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-	sudo dpkg -i google*
+```sh
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google*
+```
 
 ### beyond compare
-	wget http://www.scootersoftware.com/bcompare-4.0.0.18847_i386.deb
-	sudo dpkg -i bcompare*
+```sh
+wget http://www.scootersoftware.com/bcompare-4.0.0.18847_i386.deb
+sudo dpkg -i bcompare*
+```
 
 ### google calendar
-	sudo add-apt-repository ppa:atareao/atareao
-	sudo apt-get update
-	sudo apt-get install calendar-indicator
+```sh
+sudo add-apt-repository ppa:atareao/atareao
+sudo apt update
+sudo apt install calendar-indicator
+```
 
 ### editor
-	sudo apt-get install geany
+```sh
+sudo apt install geany
+```
 
 ### remote desktop
-	sudo apt-get install remmina
+```sh
+sudo apt install remmina
+```
 
 ### filezilla
-	sudo apt-get install filezilla
+```sh
+sudo apt install filezilla
+```
 
 ### emule
-	sudo apt-get install amule
+```sh
+sudo apt install amule
+```
 
 ### dolphin-emu
-	sudo add-apt-repository ppa:glennric/dolphin-emu
-	sudo apt-get update
-	sudo apt-get install dolphin-emu-master
+```sh
+sudo add-apt-repository ppa:glennric/dolphin-emu
+sudo apt update
+sudo apt install dolphin-emu-master
+```
 
 ### kodi
-	sudo apt-get install software-properties-common
-	sudo add-apt-repository ppa:team-xbmc/ppa
-	sudo apt-get update
-	sudo apt-get install kodi
+```sh
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:team-xbmc/ppa
+sudo apt update
+sudo apt install kodi
+```
 
 ### image editor
-	sudo apt-get install gimp inkscape
+```sh
+sudo apt install gimp inkscape
+```
 
 ### image viewer
-	wget http://download.xnview.com/XnViewMP-linux-x64.deb
-	sudo dpkg -i XnViewMP-linux-x64.deb
+```sh
+wget http://download.xnview.com/XnViewMP-linux-x64.deb
+sudo dpkg -i XnViewMP-linux-x64.deb
+```
 
 ### photo manager
-	sudo apt-get install digikam
+```sh
+sudo apt install digikam
+```
 
 ### music
-	sudo apt-get install libav-tools gstreamer0.10-plugins-ugly
+```sh
+sudo apt install libav-tools gstreamer0.10-plugins-ugly
+```
 
 ### music player
-	sudo apt-get install clementine
+```sh
+sudo apt install clementine
+```
 
 ### cd ripper
-	sudo apt-get install ripperx
-	sudo apt-get install lame libmp3lame0
+```sh
+sudo apt install ripperx
+sudo apt install lame libmp3lame0
+```
 
 ### video editor
-	sudo apt-get install avidemux
+```sh
+sudo apt install avidemux
+```
 
 ### video converter
-	sudo apt-get install handbrake
+```sh
+sudo apt install handbrake
+```
 
 ### dvd & video player
-	sudo apt-get install libdvdread4
-	sudo /usr/share/doc/libdvdread4/install-css.sh
-	sudo apt-get install regionset
-	sudo apt-get install vlc browser-plugin-vlc
+```sh
+sudo apt install libdvdread4
+sudo /usr/share/doc/libdvdread4/install-css.sh
+sudo apt install regionset
+sudo apt install vlc browser-plugin-vlc
+```
 
 ### dvd burner
-	sudo apt-get remove brasero
-	sudo apt-get install k3b
+```sh
+sudo apt remove brasero
+sudo apt install k3b
+```
 
 ### dvdrip
-	sudo apt-get install acidrip
+```sh
+sudo apt install acidrip
+```
 
 ### mdf/mds to iso
-	sudo apt-get install mdf2iso
+```sh
+sudo apt install mdf2iso
+```
 
 ### launcherpad (Fullscreen)
-	### http://www.noobslab.com/2015/03/slingscold-launcher-fixed-for-all.html
-	sudo add-apt-repository ppa:noobslab/apps
-	sudo apt-get update
-	sudo apt-get install slingscold
+http://www.noobslab.com/2015/03/slingscold-launcher-fixed-for-all.html
+
+```sh
+sudo add-apt-repository ppa:noobslab/apps
+sudo apt update
+sudo apt install slingscold
+```
 
 ### cpulimit
-	sudo apt-get install cpulimit
-
+```sh
+sudo apt install cpulimit
+```
 
 ### mac theme
-	http://logico.com.ar/blog/os-x-yosemite-xfce-theme
+http://logico.com.ar/blog/os-x-yosemite-xfce-theme
 
 
 ### arc theme
-see https://github.com/horst3180/arc-theme
+https://github.com/horst3180/arc-theme
 
 install
-	git clone https://github.com/horst3180/arc-theme --depth 1 && cd arc-theme
-	./autogen.sh --prefix=/usr
-	sudo make install
+```sh
+git clone https://github.com/horst3180/arc-theme --depth 1 && cd arc-theme
+./autogen.sh --prefix=/usr
+sudo make install
+```
 
 uninstall
-	sudo make uninstall
-	sudo rm -rf /usr/share/themes/{Arc,Arc-Darker,Arc-Dark}
-
+```sh
+sudo make uninstall
+sudo rm -rf /usr/share/themes/{Arc,Arc-Darker,Arc-Dark}
+```
 
 
 ### fix broken dependency
-
-	sudo apt-get -f install
-
+```sh
+sudo apt -f install
+```
 
 ### oracle virtualbox
 download .deb file and install
 
+```sh
 	### enable connect iphone usb to virtualbox
 	sudo usermod -a -G vboxusers username
 
 	### linux guest: allow user to access virtual box shared folder on /media/sf_*
 	sudo usermod -a -G vboxsf username
-
+```
 
 ### fingerprint
-
-	sudo add-apt-repository ppa:fingerprint/fingerprint-gui
-	sudo apt-get update
-	sudo apt-get install libbsapi policykit-1-fingerprint-gui fingerprint-gui
-
+```sh
+sudo add-apt-repository ppa:fingerprint/fingerprint-gui
+sudo apt update
+sudo apt install libbsapi policykit-1-fingerprint-gui fingerprint-gui
+```
 
 ### thinkpad x1 carbon
-	https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_5)
+https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_5)
 
-~~~
+```sh
 sudo apt install git libusb-1.0-0-dev libxv-dev
 git clone https://github.com/nmikhailov/Validity90.git
 cd Validity90/libfprint
@@ -291,4 +373,4 @@ cd Validity90/libfprint
 make
 make check
 sudo make install
-~~~
+```

@@ -1,5 +1,4 @@
 # grub boot clover
-
 ~~~
 savedefault
 insmod part_gpt

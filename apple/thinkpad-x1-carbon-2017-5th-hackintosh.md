@@ -45,18 +45,17 @@ sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstall
 ~~~
 
 ## Mount EFI
-~~~
+```sh
 mkdir /Volumes/efi
 sudo mount -t msdos /dev/disk1s1 /Volumes/efi
-~~~
+```
 
 ## Replace EFI/Clover
-
-~~~
-	git clone https://github.com/B0hrer/Thinkpad-x1c-5th-gen-Hackintosh.git
-	sudo cp -a Thinkpad-x1c-5th-gen-Hackintosh/EFI/* /Volumes/efi/EFI/
-	sudo rm /Volumes/efi/EFI/CLOVER/ACPI/patched/DSDT.aml
-~~~
+```sh
+git clone https://github.com/B0hrer/Thinkpad-x1c-5th-gen-Hackintosh.git
+sudo cp -a Thinkpad-x1c-5th-gen-Hackintosh/EFI/* /Volumes/efi/EFI/
+sudo rm /Volumes/efi/EFI/CLOVER/ACPI/patched/DSDT.aml
+```
 
 ## BIOS settings
 * Config → Network → Wake On LAN: Disabled
