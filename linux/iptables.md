@@ -1,7 +1,5 @@
-###########################################
-### iptables
-### @see https://www.digitalocean.com/community/tutorials/how-to-setup-a-basic-ip-tables-configuration-on-centos-6
-###
+# iptables
+@see https://www.digitalocean.com/community/tutorials/how-to-setup-a-basic-ip-tables-configuration-on-centos-6
 
 ### remove all rules
 	sudo iptables -F
@@ -16,8 +14,8 @@
 	sudo iptables -A INPUT -p tcp --tcp-flags ALL ALL -j DROP
 
 ### DNS
-###sudo iptables -A INPUT -p udp --sport 53 -j ACCEPT
-###sudo iptables -A INPUT -p udp -s $DNS_SERVER --sport 53 -j ACCEPT
+	sudo iptables -A INPUT -p udp --sport 53 -j ACCEPT
+	sudo iptables -A INPUT -p udp -s $DNS_SERVER --sport 53 -j ACCEPT
 
 ### Allow any established outgoing connections to receive replies from the VPS on the other side of that connection
 	sudo iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
