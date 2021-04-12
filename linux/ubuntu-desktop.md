@@ -50,12 +50,12 @@ sudo apt upgrade
 ```
 
 ### disable guest session
-~~~
-echo "
+```sh
+echo '
 [SeatDefaults]
 allow-guest=false
-" | sudo tee /usr/share/lightdm/lightdm.conf.d/50-guest-allow.conf
-~~~
+' | sudo tee /usr/share/lightdm/lightdm.conf.d/50-guest-allow.conf
+```
 
 
 ### install exfat, hfs+
@@ -162,6 +162,12 @@ sudo apt install ibus-mozc
 
  tools
 ------------------------------------
+### ms fonts
+```sh
+sudo add-apt-repository multiverse
+sudo apt update
+sudo apt install ttf-mscorefonts-installer
+```
 
 ### file manager
 ```sh
@@ -208,6 +214,28 @@ sudo apt install calendar-indicator
 sudo apt install geany
 ```
 
+Troubleshoot: invisible underscore
+> Menu / View / Change Font ... / Choose 'Andale Mono Regular'
+
+
+### opera
+```sh
+wget -O - http://deb.opera.com/archive.key | sudo apt-key add -
+sudo add-apt-repository 'deb https://deb.opera.com/opera-stable/ stable non-free'
+sudo apt-get update
+sudo apt-get install opera-stable
+```
+
+### teams
+```sh
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
+
+sudo apt update
+sudo apt install teams
+```
+
 ### remote desktop
 ```sh
 sudo apt install remmina
@@ -240,7 +268,11 @@ sudo apt install kodi
 
 ### image editor
 ```sh
-sudo apt install gimp inkscape
+sudo apt install gimp imagemagick optipng
+
+sudo add-apt-repository ppa:inkscape.dev/stable
+sudo apt update
+sudo apt install inkscape
 ```
 
 ### image viewer
@@ -347,30 +379,13 @@ sudo apt -f install
 ### oracle virtualbox
 download .deb file and install
 
+enable connect iphone usb to virtualbox
 ```sh
-	### enable connect iphone usb to virtualbox
-	sudo usermod -a -G vboxusers username
-
-	### linux guest: allow user to access virtual box shared folder on /media/sf_*
-	sudo usermod -a -G vboxsf username
+sudo usermod -a -G vboxusers username
 ```
 
-### fingerprint
+linux guest: allow user to access virtual box shared folder on /media/sf_*
 ```sh
-sudo add-apt-repository ppa:fingerprint/fingerprint-gui
-sudo apt update
-sudo apt install libbsapi policykit-1-fingerprint-gui fingerprint-gui
+sudo usermod -a -G vboxsf username
 ```
 
-### thinkpad x1 carbon
-https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_5)
-
-```sh
-sudo apt install git libusb-1.0-0-dev libxv-dev
-git clone https://github.com/nmikhailov/Validity90.git
-cd Validity90/libfprint
-./configure
-make
-make check
-sudo make install
-```
