@@ -6,3 +6,6 @@
 
 ### list package
 	repoquery --list package_name
+
+### downloadonly
+	yum --downloadonly --downloaddir=/tmp/ memcached

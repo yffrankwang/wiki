@@ -1,5 +1,29 @@
 @see https://letsencrypt.jp/usage/
 
+## ubuntu
+https://www.inmotionhosting.com/support/website/ssl/lets-encrypt-ssl-ubuntu-with-certbot/
+```sh
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install python3-certbot-apache
+sudo certbot --apache -d domain.com -d www.domain.com
+ls /etc/letsencrypt/live
+```
+
+To view settings on systemd:
+
+	systemctl show certbot.timer
+
+To view settings on non-systemd systems:
+
+	cat /etc/cron.d/certbot
+
+To test the renewal process to ensure it works:
+
+	sudo certbot renew --dry-run
+
+
+## CentOS
 ### install
 	wget https://dl.eff.org/certbot-auto
 	chmod a+x certbot-auto

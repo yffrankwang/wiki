@@ -162,6 +162,18 @@ sudo apt install ibus-mozc
 
  tools
 ------------------------------------
+### albert luncher
+https://albertlauncher.github.io/
+
+```sh
+curl https://build.opensuse.org/projects/home:manuelschneid3r/public_key | sudo apt-key add -
+echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
+sudo wget -nv https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_20.04/Release.key -O "/etc/apt/trusted.gpg.d/home:manuelschneid3r.asc"
+sudo apt update
+sudo apt install albert
+cp /usr/share/applications/albert.desktop ~/.config/autostart/ && chmod +x ~/.config/autostart/albert.desktop
+```
+
 ### ms fonts
 ```sh
 sudo add-apt-repository multiverse
@@ -220,7 +232,7 @@ Troubleshoot: invisible underscore
 
 ### opera
 ```sh
-wget -O - http://deb.opera.com/archive.key | sudo apt-key add -
+wget -qO - https://deb.opera.com/archive.key | sudo apt-key add -
 sudo add-apt-repository 'deb https://deb.opera.com/opera-stable/ stable non-free'
 sudo apt-get update
 sudo apt-get install opera-stable

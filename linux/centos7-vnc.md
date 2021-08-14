@@ -43,7 +43,7 @@ Repace ExecStart:
 
 ## Start
 
-	vncserver :1
+	vncserver -geometry 1600x900 :1
 
 ## Stop
 
@@ -51,7 +51,7 @@ Repace ExecStart:
 
 ## change xstartup
 
-	/home/<USER>/.vnc/xstartup
+	nano ~/.vnc/xstartup
 
 ~~~
 #!/bin/sh

@@ -7,6 +7,9 @@
 @see https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
 	git config --global core.autocrlf false
 
+### case sensitive
+	git config --global core.ignorecase false
+
 ### save/cache credential
 @see https://git-scm.com/docs/git-credential-store  
 @see https://git-scm.com/book/ja/v2/Git-のさまざまなツール-認証情報の保存  
@@ -34,6 +37,9 @@
 
 ### checkout branch
 	git checkout <name>
+
+### delete branch
+	git branch -d <name>
 
 
  tag

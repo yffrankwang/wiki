@@ -1,7 +1,13 @@
+### initialize db
+```sh
+initdb -D /data/pgsql/13 -U postgres --local C --encoding UTF8
+```
+
 ### error message
 C:\Program Files\PostgreSQL\9.?\data\postgresql.conf
 
 	lc_messages = 'en_US'
+
 
 ### create
 ```sql
@@ -31,7 +37,27 @@ pg_restore -d database_name -Ft -c backup.tar
 pg_restore -d database_name -Fc -c backup.dmp
 ```
 
-#### select table rows
+### upgrade
+```bat
+set OLD=C:/Program Files/PostgreSQL/9.6
+set NEW=C:/Program Files/PostgreSQL/13.3
+pg_upgrade.exe --old-datadir "%OLD%/data" --new-datadir "%NEW%/data" --old-bindir "%OLD%/bin" --new-bindir "%NEW%/bin"
+```
+
+### select table rows
 ```sql
 SELECT relname, reltuples AS approximate_row_count FROM pg_class order by relname
+```
+
+### output
+```sh
+# run sql
+psql -U USER -h HOST -d DBNAME -c "SELECT GETDATE();" > ./test.log
+
+# to csv
+psql -U USER -h HOST -d DBNAME -c "SELECT GETDATE();" -A -F,> ./test.csv
+
+# to tsv
+psql -U USER -h HOST -d DBNAME -c "SELECT GETDATE();" -A -F$'\t'> ./test.csv
+
 ```

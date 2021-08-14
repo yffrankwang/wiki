@@ -1,5 +1,7 @@
 # iptables
-@see https://www.digitalocean.com/community/tutorials/how-to-setup-a-basic-ip-tables-configuration-on-centos-6
+https://www.digitalocean.com/community/tutorials/how-to-setup-a-basic-ip-tables-configuration-on-centos-6
+https://help.ubuntu.com/community/IptablesHowTo
+
 
 ### remove all rules
 	sudo iptables -F

@@ -1,67 +1,94 @@
  VNC
 -------------------------------
 
-### vnc4server
-	# Note: Try using Ctrl-I instead of Tab on VncViewer Terminal
+## xfce
+```sh
+sudo apt install xfce4 xfce4-goodies
+```
 
-	sudo apt-get install vnc4server
+## tigervnc
+https://tutorialcrawler.com/ubuntu-debian/ubuntu-20-04%E3%81%ABvnc%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/
+
+```sh
+sudo apt install tigervnc-standalone-server
+
+echo "
+exec startxfce4
+" >> ~/.vnc/xstartup
+
+chmod +x ~/.vnc/xstartup
+```
 
 ### start vncserver
-	vncserver
-
-~~~
-cp ~/.vnc/xstartup ~/.vnc/xstartup.bak
-echo "
-#!/bin/sh
-unset SESSION_MANAGER
-unset DBUS_SESSION_BUS_ADDRESS
-
-startxfce4 &
-
-[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
-[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
-xsetroot -solid grey
-#vncconfig -iconic &
-
-" > ~/.vnc/xstartup
-~~~
+```sh
+	vncserver -localhost no -geometry 1600x900 :1
+```
 
 ### kill vncserver
+```sh
 	vncserver -kill :1
+```
 
+### change password
+```sh
+	vncpasswd
+```
 
-### vnc4server init.d
-~~~
-sudo cp vncserver.init.sh /etc/init.d/vncserver
-sudo chmod +x /etc/init.d/vncserver
-sudo mkdir -p /etc/vncserver
+### setup autorun
+```sh
+echo '
+[Unit]
+Description=Remote desktop service (VNC)
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=ubuntu
+PAMName=login
+PIDFile=/home/%u/.vnc/%H%i.pid
+ExecStartPre=/usr/bin/vncserver -kill :%i > /dev/null 2>&1 || :
+ExecStart=/usr/bin/vncserver :%i -localhost no -geometry 1600x900
+ExecStop=/usr/bin/vncserver -kill :%i
+
+[Install]
+WantedBy=multi-user.target
+' | sudo tee /etc/systemd/system/vncserver@.service
+
+sudo systemctl daemon-reload
+sudo systemctl enable vncserver@1.service
+sudo systemctl start vncserver@1.service 
+```
+
+## tightvnc
+https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-vnc-on-ubuntu-20-04
+https://linuxize.com/post/how-to-install-and-configure-vnc-on-ubuntu-20-04/
+
+```sh
+sudo apt install tightvncserver
+
 echo "
-VNCSERVERS=\"1:vncuser\"
-VNCSERVERARGS[1]=\"-geometry 1280x800\"
-" | sudo tee /etc/vncserver/vncservers.conf
-sudo update-rc.d vncserver defaults 99
-~~~
+exec startxfce4
+" >> ~/.vnc/xstartup
 
-### x11vnc
-~~~
-sudo apt-get install x11vnc xinetd
-echo "
-service x11vnc
-{
-    type = UNLISTED
-    disable = no
-    socket_type = stream
-    protocol = tcp
-    wait = no
-    user = root
-    server = /usr/bin/x11vnc
-    server_args = -inetd -o /var/log/x11vnc.log -display :0 -forever -bg -rfbauth /etc/x11vnc/passwd -shared -enablehttpproxy -forever -nolookup -auth /var/run/lightdm/root/:0
-    port = 5900
-    flags = IPv6
-}
-" | sudo tee /etc/xinetd.d/x11vnc
+chmod +x ~/.vnc/xstartup
+```
 
-sudo mkdir /etc/x11vnc
-sudo x11vnc -storepasswd /etc/x11vnc/passwd
-sudo service xinetd restart
-~~~
+
+### start vncserver
+```sh
+	vncserver -geometry 1600x900 :1
+```
+
+### kill vncserver
+```sh
+	vncserver -kill :1
+```
+
+### change password
+```sh
+	vncpasswd
+```
+
+### setup autorun
+https://serverspace.io/support/help/install-tightvnc-server-on-ubuntu-20-04/
+
