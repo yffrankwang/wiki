@@ -29,29 +29,26 @@ sudo apt install subversion git cmake doxygen checkinstall
 git config --global core.autocrlf false
 ```
 
-## oracle java
-```sh
-sudo add-apt-repository ppa:linuxuprising/java
-sudo apt update
-sudo apt install oracle-java*-installer
-```
+## golang (1.16)
+> sudo yum -y install golang
 
-### java7
- - https://packages.debian.org/experimental/openjdk-7-jdk
- - https://packages.debian.org/experimental/openjdk-7-jre
- - https://packages.debian.org/experimental/openjdk-7-jre-headless
- - https://packages.debian.org/experimental/openjdk-7-source
- - https://packages.debian.org/sid/libjpeg62-turbo
+or
 
 ```sh
-sudo dpkg -i openjdk-7-* libjpeg62-turbo*
+wget https://golang.org/dl/go1.16.7.linux-amd64.tar.gz
+tar -xzvf go1.16.7.linux-amd64.tar.gz
+sudo mv go /opt/go-1.16.7
+cd /opt/
+sudo ln -s go-1.16.7 go
 
-sudo add-apt-repository ppa:openjdk-r/ppa
-sudo apt update
-sudo apt install openjdk-7-jdk openjdk-7-source
+echo '
+# go
+export PATH="/opt/go/bin:$PATH"
+export GO111MODULE=on
+' >> ~/.bashrc
 ```
 
-### java8
+## java8
 ```sh
 sudo apt install openjdk-8-jdk openjdk-8-source
 ```
@@ -73,22 +70,21 @@ sudo pip3 install onedrivesdk==1.1.8
 curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
 
 echo '
-#pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 if which pyenv > /dev/null; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
 ' >> ~/.bashrc
-
-exit
 ```
 
 ```sh
 pyenv install -l
-pyenv install 3.9.1
+pyenv install 3.9.6
 pyenv versions
-pyenv global 3.9.1
+pyenv global 3.9.6
 pip install pymysql
 ```
 
@@ -148,3 +144,27 @@ plenv versions
 which perl
 perl -e 'print $^V'
 ```
+
+
+## oracle java
+```sh
+sudo add-apt-repository ppa:linuxuprising/java
+sudo apt update
+sudo apt install oracle-java*-installer
+```
+
+### java7
+ - https://packages.debian.org/experimental/openjdk-7-jdk
+ - https://packages.debian.org/experimental/openjdk-7-jre
+ - https://packages.debian.org/experimental/openjdk-7-jre-headless
+ - https://packages.debian.org/experimental/openjdk-7-source
+ - https://packages.debian.org/sid/libjpeg62-turbo
+
+```sh
+sudo dpkg -i openjdk-7-* libjpeg62-turbo*
+
+sudo add-apt-repository ppa:openjdk-r/ppa
+sudo apt update
+sudo apt install openjdk-7-jdk openjdk-7-source
+```
+

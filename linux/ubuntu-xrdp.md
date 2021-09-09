@@ -22,3 +22,8 @@ sudo nano /etc/xrdp/startwm.sh
 startxfce4
 ```
 
+```sh
+sudo systemctl status xrdp
+sudo systemctl start xrdp
+sudo systemctl enable xrdp
+```sh

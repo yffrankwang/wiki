@@ -1,7 +1,9 @@
 ### Basic Auth
 
+```sh
 sudo yum install httpd-tools
-
+sudo a2enmod auth_digest
+```
 
 ### Create Password File
 
