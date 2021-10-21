@@ -26,4 +26,17 @@ startxfce4
 sudo systemctl status xrdp
 sudo systemctl start xrdp
 sudo systemctl enable xrdp
+```
+
+## set xfce terminal
 ```sh
+sudo update-alternatives --config x-terminal-emulator
+```
+
+## install packages
+```sh
+sudo apt install subversion git cmake openjdk-8-jdk maven
+sudo apt install firefox geany doublecmd-gtk transmission-gtk handbrake mkvtoolnix-gui
+```
+
+

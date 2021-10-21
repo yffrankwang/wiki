@@ -1,4 +1,4 @@
-@see https://letsencrypt.jp/usage/
+@see https://letsencrypt.com/usage/
 
 ## ubuntu
 https://www.inmotionhosting.com/support/website/ssl/lets-encrypt-ssl-ubuntu-with-certbot/
@@ -23,6 +23,14 @@ To test the renewal process to ensure it works:
 	sudo certbot renew --dry-run
 
 
+## CentOS7
+```sh
+sudo yum install -y epel-release
+sudo yum install -y certbot
+sudo certbot certonly --standalone -d www.letsencrypt.com
+```
+
+
 ## CentOS
 ### install
 	wget https://dl.eff.org/certbot-auto
@@ -32,16 +40,16 @@ To test the renewal process to ensure it works:
 	./certbot-auto --help
 	
 ### execute standalone
-	./certbot-auto certonly -a standalone -d letsencrypt.jp -d www.letsencrypt.jp
+	./certbot-auto certonly -a standalone -d letsencrypt.com -d www.letsencrypt.com
 
 ### execute directory (".well-known" folder will be generated under WEB ROOT)
-	./certbot-auto certonly -w /var/www/html -d letsencrypt.jp -d www.letsencrypt.jp
+	./certbot-auto certonly -w /var/www/html -d letsencrypt.com -d www.letsencrypt.com
 
 ### execute directory (duplicate if /etc/letsencrypt/renewal/xxx.conf already exists)
-	./certbot-auto --duplicate certonly -w /var/www/html -d letsencrypt.jp -d www.letsencrypt.jp
+	./certbot-auto --duplicate certonly -w /var/www/html -d letsencrypt.com -d www.letsencrypt.com
 
 ### confirm
-	ll /etc/letsencrypt/live/letsencrypt.jp/
+	ll /etc/letsencrypt/live/letsencrypt.com/
 
 ### auto renew (every 2 month, day 1, AM 6:00)
 	echo '0 6 1 2,4,6,8,10,12 * /root/certbot-auto renew --no-self-upgrade --force-renew && /bin/systemctl reload nginx' > lets.cron

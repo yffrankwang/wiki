@@ -91,9 +91,17 @@ https://help.ubuntu.com/community/IptablesHowTo
 
 ## Port FORWARD
 
-### Add 443 -> 8080
-	sudo iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8080
+### Add
+```sh
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80   -j REDIRECT --to-ports 12000
+sudo iptables -t nat -A PREROUTING -p tcp --dport 443  -j REDIRECT --to-ports 12443
+sudo iptables -t nat -A PREROUTING -p tcp --dport 443  -j REDIRECT --to-ports 8080
+```
 
 ### Remove
-	sudo iptables -D PREROUTING -t nat -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8080
+```sh
+sudo iptables -t nat -D PREROUTING -p tcp --dport 80   -j REDIRECT --to-ports 12000
+sudo iptables -t nat -D PREROUTING -p tcp --dport 443  -j REDIRECT --to-ports 12443
+sudo iptables -t nat -D PREROUTING -p tcp --dport 443  -j REDIRECT --to-ports 8080
+```
 

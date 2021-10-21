@@ -8,10 +8,13 @@ https://github.com/hwdsl2/setup-ipsec-vpn
 ## Install
 ```sh
 wget https://git.io/vpnsetup-centos -O vpnsetup.sh
+
+wget https://git.io/vpnsetup -O vpnsetup.sh
+
 sudo VPN_IPSEC_PSK='your_ipsec_pre_shared_key' \
 VPN_USER='your_vpn_username' \
 VPN_PASSWORD='your_vpn_password' \
-sh vpn.sh
+sh vpnsetup.sh
 
 wget https://git.io/ikev2setup -O ikev2.sh
 sudo bash ikev2.sh --auto

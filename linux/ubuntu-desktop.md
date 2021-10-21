@@ -188,7 +188,7 @@ sudo apt install doublecmd-gtk doublecmd-help-en
 
 ### rar
 ```sh
-sudo apt install rar unrar
+sudo apt install unrar libunrar5
 ```
 
 ### 7zip
@@ -342,6 +342,12 @@ sudo apt install k3b
 ```sh
 sudo apt install acidrip
 ```
+
+### mkvtoolnix
+```sh
+sudo apt install mkvtoolnix-gui
+```
+
 
 ### mdf/mds to iso
 ```sh
