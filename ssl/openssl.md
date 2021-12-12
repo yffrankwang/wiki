@@ -43,3 +43,16 @@ Accept: */*
 Host: site2.com
 
 ~~~
+
+
+## change the password of a pfx file
+
+### convert use openssl
+
+> openssl pkcs12 -nodes  -in old.pfx -out old.pem
+> openssl pkcs12 -export -in old.pem -out new.pfx
+
+
+### check pfx under windows
+
+> certutil -dump new.pfx
