@@ -33,6 +33,15 @@ sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
 sudo firewall-cmd --permanent --zone=public --add-port=4000-4029/tcp
 ```
 
+### port forward
+```sh
+sudo firewall-cmd --permanent --add-forward-port=port=80:proto=tcp:toport=12000
+sudo firewall-cmd --permanent --add-forward-port=port=443:proto=tcp:toport=12443
+
+sudo firewall-cmd --permanent --remove-forward-port=port=80:proto=tcp:toport=12000
+sudo firewall-cmd --permanent --remove-forward-port=port=443:proto=tcp:toport=12443
+```
+
 ### reload
 ```sh
 sudo firewall-cmd --reload
