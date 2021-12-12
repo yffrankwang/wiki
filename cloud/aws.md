@@ -31,7 +31,7 @@
 	mkdir .ssh
 	chmod 700 .ssh
 	cd .ssh
-	ssh-keygen -t rsa
+	ssh-keygen -t rsa -m PEM -b 2048
 	mv id_rsa.pub authorized_keys
 	chmod 600 authorized_keys
 
