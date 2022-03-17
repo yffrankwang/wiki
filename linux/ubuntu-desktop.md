@@ -64,10 +64,8 @@ sudo apt install exfat-utils exfat-fuse hfsplus
 ```
 
 ### disable crash report
-> enabled=0
-
 ```sh
-sudo nano /etc/default/apport
+sudo sed -i 's/enabled=1/enabled=0/' /etc/default/apport
 ```
 
 
@@ -172,6 +170,11 @@ sudo wget -nv https://download.opensuse.org/repositories/home:manuelschneid3r/xU
 sudo apt update
 sudo apt install albert
 cp /usr/share/applications/albert.desktop ~/.config/autostart/ && chmod +x ~/.config/autostart/albert.desktop
+```
+
+https://github.com/albertlauncher/albert/issues/1033#issuecomment-860456610
+```sh
+rm ~/.config/albert/core.db
 ```
 
 ### ms fonts

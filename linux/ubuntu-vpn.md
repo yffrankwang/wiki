@@ -20,6 +20,7 @@ https://wiki.strongswan.org/projects/strongswan/wiki/IKEv1CipherSuites
 
 
 ## check vpn server ciphers
+
 ```sh
 sudo apt install ike-scan
 
@@ -56,3 +57,9 @@ sudo ipsec stop
 sudo ./ike-scan.sh 1.2.3.4 | grep SA=
 ```
 
+## Troubleshoot
+
+```sh
+journalctl -f
+
+```

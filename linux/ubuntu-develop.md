@@ -10,9 +10,61 @@ sudo usermod -a -G wireshark username
 ## build essential
 ```sh
 sudo apt install build-essential
-sudo apt install libxml2-dev
-sudo apt install libssl-dev
+sudo apt install libxml2-dev libssl-dev libcurl4-openssl-dev
 ```
+
+## heroku CLI
+> curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+
+
+## postgresql
+```sh
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+
+sudo apt update
+
+sudo apt install postgresql postgresql-contrib
+
+sudo apt install libpq-dev
+```
+
+### pgadmin4
+https://www.pgadmin.org/download/pgadmin-4-apt/
+
+```sh
+# Install the public key for the repository (if not done previously):
+sudo curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
+
+# Create the repository configuration file:
+sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+
+#
+# Install pgAdmin
+#
+
+# Install for both desktop and web modes:
+sudo apt install pgadmin4
+
+# Install for desktop mode only:
+sudo apt install pgadmin4-desktop
+
+# Install for web mode only:
+sudo apt install pgadmin4-web
+
+# Configure the webserver, if you installed pgadmin4-web:
+sudo /usr/pgadmin4/bin/setup-web.sh
+```
+
+disable master password
+```sh
+echo '
+MASTER_PASSWORD_REQUIRED = False
+SERVER_MODE = False
+' | sudo tee -a /usr/pgadmin4/web/config_local.py
+```
+
 
 ## mysql-client
 ```sh
@@ -51,6 +103,33 @@ export GO111MODULE=on
 ## java8
 ```sh
 sudo apt install openjdk-8-jdk openjdk-8-source
+```
+
+## nodejs
+```sh
+sudo apt install nodejs-dev node-gyp libssl1.0-dev
+sudo apt install nodejs npm
+sudo ln -s `which nodejs` /usr/local/bin/node
+```
+
+### nvm: node version manager
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+echo '
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+' >> ~/.bashrc
+```
+
+```sh
+nvm ls-remote
+nvm install v10.24.1
+nvm alias default v10.24.1
+nvm ls
+nvm use x.y.z
 ```
 
 ## python
@@ -94,27 +173,32 @@ pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U
 
 ```
 
-## nodejs
-```sh
-sudo apt install nodejs-dev node-gyp libssl1.0-dev
-sudo apt install nodejs npm
-sudo ln -s `which nodejs` /usr/local/bin/node
-```
-
-### nvm: node version manager
-```sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
-exit
-```
+### rbenv
+https://github.com/rbenv/rbenv
 
 ```sh
-nvm ls-remote
-nvm install 10.18
-nvm alias default 10.18
-nvm ls
-nvm use x.y.z
+sudo apt install -y libreadline-dev zlib1g-dev
+
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+cd ~/.rbenv && src/configure && make -C src
+
+git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+echo '
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
+' >> ~/.bashrc
 ```
 
+```sh
+rbenv install -l
+rbenv install 2.5.1
+rbenv versions
+rbenv global 2.5.1
+```
 
 ## perl
 ```sh
