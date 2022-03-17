@@ -7,7 +7,7 @@ These commands allow you to generate CSRs, Certificates, Private Keys and do oth
 	openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout key.pem
 
 * Generate a self-signed certificate (see How to Create and Install an Apache Self Signed Certificate for more info)
-	openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout key.pem -out cert.pem
+	openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout self.key.pem -out self.crt.pem
 
 * Generate a certificate signing request (CSR) for an existing private key
 	openssl req -out CSR.csr -key key.pem -new
