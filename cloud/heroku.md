@@ -1,3 +1,8 @@
+## install
+
+### ubuntu
+> curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+
 ### Login
 > heroku login
 
@@ -11,11 +16,18 @@
 ### Deploy
 > git push heroku master
 
+### Stack
+> heroku stack
+> heroku stack:set heroku-18
+
 ### Open
 > heroku open
 
 ### List Apps
 > heroku apps
+
+### Set default apps
+> export HEROKU_APP=appname
 
 ### Run bash
 > heroku run bash -a APP
