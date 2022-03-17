@@ -6,6 +6,7 @@
 
 ### extract subtitle
 	mkvextract xxx.mkv tracks <track index>:xxx.srt
+	find . -name '*.mkv' -exec mkvextract '{}' tracks <track index>:{}.srt \;
 
 ### remove subtitle
 
