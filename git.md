@@ -139,3 +139,26 @@
 -------------------------------------
 ### chmod
 	git update-index --chmod=+x <file>
+
+
+ github
+-------------------------------------
+### key gen
+	ssh-keygen -t ed25519 -C "your_email@example.com"
+
+### ssh config
+.ssh/config
+```
+Host user1_github
+    Hostname github.com
+    User git
+    IdentityFile ~/.ssh/user1.key
+
+Host user2_github
+    Hostname github.com
+    User git
+    IdentityFile ~/.ssh/user2.key
+```
+
+### clone
+	git clone git@user1_github:username/project.git
