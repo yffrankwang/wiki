@@ -16,6 +16,11 @@ CREATE DATABASE testdb WITH OWNER = testuser ENCODING = 'UTF-8';
 GRANT ALL ON DATABASE testdb TO testuser;
 ```
 
+### create superuser
+```sql
+CREATE ROLE mysuperuser2 WITH SUPERUSER CREATEDB CREATEROLE LOGIN ENCRYPTED PASSWORD 'mysuperpass2';
+```
+
 ### backup
 ```sh
 pg_dump database_name > backup.sql
@@ -35,6 +40,7 @@ pg_dump -U postgres -a foo > data-only.sql
 psql database_name < backup.sql
 pg_restore -d database_name -Ft -c backup.tar
 pg_restore -d database_name -Fc -c backup.dmp
+pg_restore --verbose --clean --no-acl --no-owner -d database_name backup.dmp
 ```
 
 ### upgrade
