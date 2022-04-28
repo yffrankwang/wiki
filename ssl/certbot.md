@@ -8,6 +8,13 @@ sudo systemctl status certbot.timer
 
 ```
 
+## centos
+```
+sudo yum install python2-certbot-apache
+
+sudo certbot --apache
+```
+
 ### test
 ```sh
 sudo certbot renew --dry-run
