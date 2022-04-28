@@ -7,8 +7,16 @@ sudo yum install -y php php-cli php-fpm php-gd php-mbstring php-mysql php-xml ph
 ```sh
 sudo yum install -y epel-release
 sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
-sudo yum install php74 php74-php php74-php-pgsql php74-php-soap php74-php-xml php74-php-mbstring php74-php-intl
-cat /etc/httpd/conf.modules.d/15-php74-php.conf
+sudo yum install php74 php74-php php74-php-pgsql php74-php-soap php74-php-xml php74-php-mbstring php74-php-intl php74-php-curl php74-php-pecl-zip
+cat /etc/httpd/conf.modules.d/*-php74-php.conf
+```
+
+### install (php8)
+```sh
+sudo yum install -y epel-release
+sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-8.rpm
+sudo yum install php80 php80-php php80-php-pgsql php80-php-soap php80-php-xml php80-php-mbstring php80-php-intl php80-php-curl php80-php-pecl-zip
+cat /etc/httpd/conf.modules.d/*-php80-php.conf
 ```
 
 ### config php
