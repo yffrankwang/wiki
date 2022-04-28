@@ -21,8 +21,9 @@
 ### Change Site URL in db
 
 	SELECT * FROM wp_options WHERE option_name in ('siteurl', 'home');
-	UPDATE wp_options SET option_value='http://yyy.com' WHERE option_name in ('siteurl', 'home');
+	UPDATE wp_options SET option_value = 'http://yyy.com' WHERE option_name in ('siteurl', 'home');
 	UPDATE wp_posts SET post_content = replace(post_content, 'http://xxx.com', 'http://yyy.com');
+	UPDATE wp_posts SET guid = replace(guid, 'http://xxx.com', 'http://yyy.com');
 	UPDATE wp_postmeta set meta_value = replace(meta_value, 'http://xxx.com', 'http://yyy.com');
 
 ### Change Site URL in wp-config.php
