@@ -100,9 +100,20 @@ export GO111MODULE=on
 ' >> ~/.bashrc
 ```
 
-## java8
+## java
 ```sh
 sudo apt install openjdk-8-jdk openjdk-8-source
+sudo apt install openjdk-11-jdk openjdk-11-source
+
+ls -la /etc/alternatives/java
+sudo update-alternatives --config java
+
+ls -la /etc/alternatives/javac
+sudo update-alternatives --config javac
+
+echo '
+export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+' >> ~/.bashrc
 ```
 
 ## nodejs
