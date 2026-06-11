@@ -39,6 +39,28 @@ snap-store         3.36.0-82-g80486d0  481   latest/stable/…  canonical✓  -
 snapd              2.47.1              9721  latest/stable    canonical✓  snapd
 ~~~
 
+~~~
+kevin@olubuntu2204:~$ snap list
+Name               Version          Rev    Tracking       Publisher   Notes
+bare               1.0              5      latest/stable  canonical✓  base
+core20             20220805         1611   latest/stable  canonical✓  base
+firefox            104.0.1-1        1775   latest/stable  mozilla✓    -
+gnome-3-38-2004    0+git.891e5bc    115    latest/stable  canonical✓  -
+gtk-common-themes  0.1-81-g442e511  1535   latest/stable  canonical✓  -
+snapd              2.56.2           16292  latest/stable  canonical✓  snapd
+~~~
+
+~~~
+kevin@olubuntu2404:~$ snap list
+Name               Version          Rev    Tracking       Publisher   Notes
+bare               1.0              5      latest/stable  canonical✓  base
+core22             20240823         1612   latest/stable  canonical✓  base
+gnome-42-2204      0+git.510a601    176    latest/stable  canonical✓  -
+gtk-common-themes  0.1-81-g442e511  1535   latest/stable  canonical✓  -
+snapd              2.63             21759  latest/stable  canonical✓  snapd
+thunderbird        128.2.0esr-1     509    latest/stable  canonical✓  -
+~~~
+
 To remove these, you will need them using sudo snap remove <package>.
 
 Run the following command to remove them all (the order of removal seems to be of importance here):
@@ -48,6 +70,24 @@ sudo snap remove snap-store
 sudo snap remove gtk-common-themes
 sudo snap remove gnome-3-34-1804
 sudo snap remove core18
+sudo snap remove snapd
+```
+
+```sh
+sudo systemctl stop snapd
+sudo snap remove snap-store firefox
+sudo snap remove gtk-common-themes
+sudo snap remove gnome-3-38-2004
+sudo snap remove core20 bare
+sudo snap remove snapd
+```
+
+```sh
+sudo systemctl stop snapd
+sudo snap remove thunderbird
+sudo snap remove gtk-common-themes
+sudo snap remove gnome-42-2204
+sudo snap remove core22 bare
 sudo snap remove snapd
 ```
 

@@ -13,9 +13,13 @@ sudo yum groupinstall -y xfce
 ```sh
 sudo yum install -y epel-release
 sudo yum install -y xrdp
+
+# optional
 sudo sed -e 's/^new_cursors=true/new_cursors=false/g' -i /etc/xrdp/xrdp.ini
+
 sudo systemctl enable xrdp
 sudo systemctl start xrdp
+sudo systemctl status xrdp
 ```
 
 ### Open XRDP port

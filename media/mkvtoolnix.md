@@ -17,6 +17,11 @@ remove all subtitles (copy none)
 	mkvmerge -o output.mkv --no-subtitles input.mkv
 	find . -name '*.mkv' -exec mkvmerge -o './output/{}' --no-subtitles '{}' \;
 
+
+### remove audio-tracks
+	mkvmerge -o output.mkv --audio-tracks 1,2 input.mkv
+
+
 ### remove attachments
 	mkvmerge -o output.mkv --no-attachments input.mkv
 

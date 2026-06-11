@@ -30,6 +30,10 @@ sudo firewall-cmd --permanent --zone=public --add-service=imaps
 ### add port
 ```sh
 sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=12000/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=12443/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=13000/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=17000/tcp
 sudo firewall-cmd --permanent --zone=public --add-port=4000-4029/tcp
 ```
 

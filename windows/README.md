@@ -67,3 +67,7 @@ https://support.microsoft.com/en-us/help/4295591/credssp-encryption-oracle-remed
 	netsh
 	interface ip show config
 	interface ip set dns "Ethernet0" static 8.8.8.8
+
+### Remove windows defender scan history
+
+	rmdir /s  "C:\ProgramData\Microsoft\Windows Defender\Scans\History\Service\DetectionHistory"

@@ -1,3 +1,8 @@
+ Linux Swap File
+========================
+https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-20-04
+
+
  Creating a Swap File
 -----------------------
 
@@ -38,7 +43,9 @@ Verify that the swap is active by using either the swapon or the free command as
  Adjusting the Swappiness Value
 ---------------------------------
 
-Swappiness is a Linux kernel property that defines how often the system will use the swap space. Swappiness can have a value between 0 and 100. A low value will make the kernel to try to avoid swapping whenever possible while a higher value will make the kernel to use the swap space more aggressively.
+Swappiness is a Linux kernel property that defines how often the system will use the swap space. 
+Swappiness can have a value between 0 and 100. 
+A low value will make the kernel to try to avoid swapping whenever possible while a higher value will make the kernel to use the swap space more aggressively.
 
 The default swappiness value on CentOS 7 is 30. You can check the current swappiness value by typing the following command:
 
@@ -52,8 +59,33 @@ For example, to set the swappiness value to 10, type:
 
 To make this parameter persistent across reboots append the following line to the /etc/sysctl.conf file:
 
-	vm.swappiness=10
+	echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.conf
 
+
+ Adjusting the Cache Pressure Setting
+--------------------------------------
+
+Another related value that you might want to modify is the vfs_cache_pressure.
+This setting configures how much the system will choose to cache inode and dentry information over other data.
+Basically, this is access data about the filesystem.
+This is generally very costly to look up and very frequently requested,
+so it’s an excellent thing for your system to cache.
+You can see the current value by querying the proc filesystem again:
+
+	cat /proc/sys/vm/vfs_cache_pressure
+
+As it is currently configured, our system removes inode information from the cache too quickly. We can set this to a more conservative setting like 50 by typing:
+
+	sudo sysctl vm.vfs_cache_pressure=50
+
+Again, this is only valid for our current session.
+We can change that by adding it to our configuration file like we did with our swappiness setting:
+
+    sudo nano /etc/sysctl.conf
+
+To make this parameter persistent across reboots append the following line to the /etc/sysctl.conf file:
+
+	vm.vfs_cache_pressure=50
 
 
  Removing a Swap File

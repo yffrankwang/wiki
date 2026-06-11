@@ -1,3 +1,5 @@
+@see https://fostips.com/ubuntu-21-10-two-firefox-remove-snap/
+
 # Install Firefox via “Mozilla Team” team PPA
 
 The team described that it has assumed responsibility for Ubuntu’s official Firefox and Thunderbird packages.
@@ -44,14 +46,14 @@ The empty Firefox deb in Ubuntu’s official repository has version number 1:1sn
 
 To workaround the issue, you have to set a higher PPA priority. To do so, run the command below in terminal (Ctrl+Alt+T):
 
-```
-sudo nano /etc/apt/preferences.d/mozillateamppa
-```
-
-The command creates and opens empty config file in Gedit text editor. When it opens, add the lines below and save it:
-
-```
-Package: firefox*
+```sh
+echo 'Package: firefox*
 Pin: release o=LP-PPA-mozillateam
 Pin-Priority: 501
+
+Package: firefox*
+Pin: release o=Ubuntu
+Pin-Priority: -1
+' | sudo tee /etc/apt/preferences.d/mozillateamppa
+
 ```

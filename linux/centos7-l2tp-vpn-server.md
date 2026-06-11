@@ -117,6 +117,8 @@ sudo systemctl enable ipsec
 sudo systemctl enable xl2tpd
 sudo systemctl restart ipsec
 sudo systemctl restart xl2tpd
+sudo systemctl status ipsec
+sudo systemctl status xl2tpd
 ```
 
 ## verify

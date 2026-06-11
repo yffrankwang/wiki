@@ -33,10 +33,16 @@ sudo systemctl enable xrdp
 sudo update-alternatives --config x-terminal-emulator
 ```
 
-## install packages
+## troubleshoot
+Authentication is required to create a color managed device.
+
 ```sh
-sudo apt install subversion git cmake openjdk-8-jdk maven
-sudo apt install firefox geany doublecmd-gtk transmission-gtk handbrake mkvtoolnix-gui
+echo '
+[Netowrkmanager]
+Identity=unix-user:*
+Action=org.freedesktop.color-manager.create-device
+ResultAny=no
+ResultInactive=no
+ResultActive=yes
+' | sudo tee /etc/polkit-1/localauthority/50-local.d/xrdp-color-manager.pkla
 ```
-
-

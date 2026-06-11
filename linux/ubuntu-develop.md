@@ -1,5 +1,15 @@
 # develop
 
+## ulimit
+```sh
+ulimit -n 65535
+
+echo '
+* soft nofile 65535
+* hard nofile 65535
+' | sudo tee -a /etc/security/limits.conf
+
+
 ## wireshark (select 'Yes' on config window)
 ```sh
 sudo apt install wireshark
@@ -13,21 +23,62 @@ sudo apt install build-essential
 sudo apt install libxml2-dev libssl-dev libcurl4-openssl-dev
 ```
 
-## heroku CLI
-> curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+### vscode
+```sh
+sudo apt install wget gpg
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" |sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+rm -f packages.microsoft.gpg
 
+sudo apt install apt-transport-https
+sudo apt update
+sudo apt install code
+```
+
+## heroku CLI
+> curl https://cli-assets.heroku.com/install.sh | sh
+
+## apache2
+```sh
+sudo apt install apache2
+sudo a2enmod rewrite proxy headers
+```
 
 ## postgresql
 ```sh
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 
 sudo apt update
-
 sudo apt install postgresql postgresql-contrib
-
 sudo apt install libpq-dev
+
+sudo cp /etc/postgresql/14/main/postgresql.conf /tmp/
+sudo sed -i -e "s/#listen_addresses.*/listen_addresses = '*'/" /etc/postgresql/14/main/postgresql.conf
+
+sudo cp /etc/postgresql/14/main/pg_hba.conf /tmp/
+sudo sed -i -e 's,127.0.0.1/32,0.0.0.0/0,' -e 's,::1/128,::/0,' /etc/postgresql/14/main/pg_hba.conf
+
+sudo systemctl enable postgresql
+sudo systemctl start  postgresql
+```
+
+### change password to 'xxx'
+```sh
+sudo -u postgres psql
+psql> \password
+psql> \q
+```
+
+### pgvector
+```sh
+sudo apt install postgresql-server-dev-14
+cd /tmp
+git clone --branch v0.5.1 https://github.com/pgvector/pgvector.git
+cd pgvector
+make
+sudo make install
 ```
 
 ### pgadmin4
@@ -81,8 +132,8 @@ sudo apt install subversion git cmake doxygen checkinstall
 git config --global core.autocrlf false
 ```
 
-## golang (1.16)
-> sudo yum -y install golang
+## golang
+> sudo apt install golang
 
 or
 
@@ -104,6 +155,7 @@ export GO111MODULE=on
 ```sh
 sudo apt install openjdk-8-jdk openjdk-8-source
 sudo apt install openjdk-11-jdk openjdk-11-source
+sudo apt install openjdk-17-jdk openjdk-17-source
 
 ls -la /etc/alternatives/java
 sudo update-alternatives --config java
@@ -157,6 +209,11 @@ sudo pip3 install onedrivesdk==1.1.8
 
 ### pyenv: python version manager
 ```sh
+sudo apt install build-essential libbz2-dev libdb-dev \
+  libreadline-dev libffi-dev libgdbm-dev liblzma-dev \
+  libncursesw5-dev libsqlite3-dev libssl-dev \
+  zlib1g-dev uuid-dev tk-dev
+
 curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash
 
 echo '
@@ -172,9 +229,9 @@ fi
 
 ```sh
 pyenv install -l
-pyenv install 3.9.6
+pyenv install 3.10.7
 pyenv versions
-pyenv global 3.9.6
+pyenv global 3.10.7
 pip install pymysql
 ```
 
@@ -263,3 +320,13 @@ sudo apt update
 sudo apt install openjdk-7-jdk openjdk-7-source
 ```
 
+
+## php
+```sh
+sudo add-apt-repository ppa:ondrej/php
+sudo apt update
+sudo apt install php8.1 php8.1-pgsql php8.1-soap php8.1-xml php8.1-mbstring php8.1-curl php8.1-intl php8.1-zip php8.1-gd
+sudo apt install php8.2 php8.2-pgsql php8.2-soap php8.2-xml php8.2-mbstring php8.2-curl php8.2-intl php8.2-zip php8.2-gd
+sudo apt install php8.3 php8.3-pgsql php8.3-soap php8.3-xml php8.3-mbstring php8.3-curl php8.3-intl php8.3-zip php8.3-gd
+sudo update-alternatives --config php
+```

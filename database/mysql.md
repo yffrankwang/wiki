@@ -4,6 +4,7 @@ CREATE USER 'user'@'%' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON dbname-xxxx.* TO 'user'@'%';
 GRANT ALL PRIVILEGES ON dbname-xxxx.* TO 'user'@'%' IDENTIFIED BY 'password';
 ALTER USER 'user'@'%' PASSWORD EXPIRE NEVER;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '<password>';
 FLUSH PRIVILEGES;
 ```
 

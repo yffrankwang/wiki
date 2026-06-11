@@ -1,7 +1,29 @@
 ### initialize db
 ```sh
-initdb -D /data/pgsql/13 -U postgres --local C --encoding UTF8
+initdb -D /data/pgsql/16 -U postgres --locale=C --encoding=UTF8
 ```
+
+### pg_upgrade
+change old/new pg_hba.conf METHOD to trust.
+
+```bat
+pg_upgrade.exe --old-datadir D:\Develop\Database\pgsql13 --new-datadir D:\Develop\Database\pgsql16 --old-bindir D:\Develop\Servers\pgsql-13.3\bin --new-bindir D:\Develop\Servers\pgsql-16.3\bin -U postgres
+```
+
+### pgvector
+https://github.com/pgvector/pgvector
+
+```bat
+call "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"
+
+set "PGROOT=C:\Program Files\PostgreSQL\16"
+cd %TEMP%
+git clone --branch v0.7.3 https://github.com/pgvector/pgvector.git
+cd pgvector
+nmake /F Makefile.win
+nmake /F Makefile.win install
+```
+
 
 ### error message
 C:\Program Files\PostgreSQL\9.?\data\postgresql.conf
@@ -66,4 +88,86 @@ psql -U USER -h HOST -d DBNAME -c "SELECT GETDATE();" -A -F,> ./test.csv
 # to tsv
 psql -U USER -h HOST -d DBNAME -c "SELECT GETDATE();" -A -F$'\t'> ./test.csv
 
+```
+
+### encoding
+```bat
+SET PGCLIENTENCODING=utf-8
+chcp 65001
+psql.exe -U postgres -f utf8.sql  testdb
+```
+
+### reset sequence
+```sql
+ALTER SEQUENCE test_id_seq RESTART WITH 100;
+
+SELECT SETVAL('test_id_seq', 101, false);
+
+SELECT SETVAL('test_id_seq', COALESCE((SELECT MAX(id)+1 FROM test), 1), false);
+```
+
+### schemas
+```sql
+SELECT schema_name FROM information_schema.schemata;
+
+CREATE SCHEMA test;
+```
+
+### indexes
+```sql
+SELECT
+	schemaname,
+	tablename,
+	indexname,
+	indexdef
+FROM
+	pg_indexes
+ORDER BY
+	schemaname,
+	tablename,
+	indexname;
+```
+
+```sql
+SELECT
+	'DROP INDEX ' || schemaname || '.' || indexname || ';' as sql
+FROM
+	pg_indexes
+WHERE
+	indexname like 'idx_%'
+ORDER BY
+	schemaname,
+	tablename,
+	indexname;
+```
+
+### statistics
+
+schema list:
+```sql
+SELECT
+	nspname AS name,
+	COALESCE((SELECT SUM(pg_table_size(oid)) FROM pg_catalog.pg_class WHERE relnamespace = pg_namespace.oid AND relkind = 'r'), 0) AS size,
+	COALESCE(obj_description(oid, 'pg_namespace'), '') AS comment
+FROM "pg_catalog"."pg_namespace"
+WHERE "nspname" NOT LIKE '%\_%'
+```
+
+table list:
+```sql
+SELECT
+	n.nspname,
+	c.relname,
+	pg_relation_size(c.oid) as relsize,
+	pg_table_size(c.oid) as tblsize,
+	pg_indexes_size(c.oid) as idxsize,
+	pg_total_relation_size(c.oid) as size
+FROM
+	pg_catalog.pg_class c
+JOIN
+	pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+WHERE
+	 n.nspname NOT LIKE '%\_%'
+ AND c.relkind = 'r'
+ORDER BY nspname, relname
 ```

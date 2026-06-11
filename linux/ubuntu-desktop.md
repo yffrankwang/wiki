@@ -1,3 +1,8 @@
+### hostname
+```sh
+sudo hostnamectl set-hostname ubuntu
+```
+
 ### timezone
 ```sh
 sudo timedatectl set-timezone Asia/Tokyo
@@ -104,7 +109,26 @@ class "GtkScrollbar" style "myscrollbar"
 ' >>  ~/.gtkrc-2.0
 ```
 
-### Key Remapping ()
+### Key Remapping (setkeycodes)
+'Ctrl + Alt + F1' switch to console:
+```sh
+showkey -s
+showkey -k
+```
+
+| KEY  | SCANCODE DOWN | SCANCODE UP | KEYCODE |
+|------|---------------|-------------|---------|
+| CTRL | 0x1d          | 0x9d        | 29      |
+| CAPS | 0x3a          | 0xba        | 58      |
+
+```sh
+sudo crontab -e
+```
+~~~
+	@reboot setkeycodes 0x3a 29 0xba 29 0x1d 58 0x9d 58
+~~~
+
+### Key Remapping (Xorg), not recommend, use low-level setkeycodes instead
 ```sh
 sudo nano /etc/default/keyboard
 ```
@@ -162,11 +186,12 @@ sudo apt install ibus-mozc
 ------------------------------------
 ### albert luncher
 https://albertlauncher.github.io/
+https://software.opensuse.org/download.html?project=home:manuelschneid3r&package=albert
 
 ```sh
-curl https://build.opensuse.org/projects/home:manuelschneid3r/public_key | sudo apt-key add -
-echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
-sudo wget -nv https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_20.04/Release.key -O "/etc/apt/trusted.gpg.d/home:manuelschneid3r.asc"
+echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/home_manuelschneid3r.list
+curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_manuelschneid3r.gpg > /dev/null
+
 sudo apt update
 sudo apt install albert
 cp /usr/share/applications/albert.desktop ~/.config/autostart/ && chmod +x ~/.config/autostart/albert.desktop
@@ -177,11 +202,12 @@ https://github.com/albertlauncher/albert/issues/1033#issuecomment-860456610
 rm ~/.config/albert/core.db
 ```
 
-### ms fonts
+### ms/cjk fonts
 ```sh
 sudo add-apt-repository multiverse
 sudo apt update
 sudo apt install ttf-mscorefonts-installer
+sudo apt install fonts-noto-cjk
 ```
 
 ### file manager
@@ -189,9 +215,19 @@ sudo apt install ttf-mscorefonts-installer
 sudo apt install doublecmd-gtk doublecmd-help-en
 ```
 
+### top-down terminal
+```sh
+sudo apt install guake
+```
+
 ### rar
 ```sh
 sudo apt install unrar libunrar5
+```
+
+### xpdf tools (pdftotext ... )
+```sh
+sudo apt install poppler-utils
 ```
 
 ### 7zip
@@ -213,8 +249,14 @@ sudo dpkg -i google*
 
 ### beyond compare
 ```sh
-wget http://www.scootersoftware.com/bcompare-4.0.0.18847_i386.deb
+wget https://www.scootersoftware.com/bcompare-4.4.6.27483_amd64.deb
+sudo apt install poppler-utils
 sudo dpkg -i bcompare*
+```
+
+### bittorrent
+```sh
+sudo apt install transmission-gtk
 ```
 
 ### google calendar
@@ -308,6 +350,8 @@ sudo apt install libav-tools gstreamer0.10-plugins-ugly
 
 ### music player
 ```sh
+sudo add-apt-repository ppa:me-davidsansome/clementine
+sudo apt update
 sudo apt install clementine
 ```
 
@@ -317,13 +361,15 @@ sudo apt install ripperx
 sudo apt install lame libmp3lame0
 ```
 
-### video editor
+### video tools/editor
 ```sh
-sudo apt install avidemux
+sudo apt install avidemux mkvtoolnix-gui
 ```
 
-### video converter
+### handbrake
 ```sh
+sudo add-apt-repository ppa:ubuntuhandbook1/handbrake
+sudo apt update
 sudo apt install handbrake
 ```
 

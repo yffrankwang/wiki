@@ -24,16 +24,26 @@
 	}
 
 ## new ssh user
-
-	sudo adduser new_user --disabled-password
-	sudo usermod -a -G wheel new_user
-	sudo su - new_user
-	mkdir .ssh
-	chmod 700 .ssh
-	cd .ssh
-	ssh-keygen -t rsa -m PEM -b 2048
-	mv id_rsa.pub authorized_keys
-	chmod 600 authorized_keys
+```sh
+sudo adduser new_user --disabled-password
+sudo usermod -a -G wheel new_user
+sudo su - new_user
+mkdir .ssh
+chmod 700 .ssh
+cd .ssh
+ssh-keygen -t rsa -m PEM -b 2048
+mv id_rsa.pub authorized_keys
+chmod 600 authorized_keys
+```
 
 download .ssh/id_rsa and save it to private-key.pem
 
+## extend root volumn
+```sh
+sudo lsblk
+sudo growpart /dev/nvme0n1 1
+sudo lsblk
+df -hT
+sudo resize2fs /dev/nvme0n1p1
+df -hT
+```

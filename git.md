@@ -10,6 +10,9 @@
 ### case sensitive
 	git config --global core.ignorecase false
 
+### symlinks
+	git config --global core.symlinks true
+
 ### save/cache credential
 @see https://git-scm.com/docs/git-credential-store  
 @see https://git-scm.com/book/ja/v2/Git-のさまざまなツール-認証情報の保存  
@@ -22,6 +25,11 @@
 
 	git config --system credential.helper store
 	git config --system --unset credential.helper
+
+### .gitignore ignore all files except one
+	/cache/*
+	!/cache/index.html
+
 
 
  branch
@@ -70,6 +78,7 @@
 	git push origin <name>
 	git push origin --tags
 
+
  rebase
 ------------------------
 ### pull rebase
@@ -98,9 +107,8 @@
 	git commit --amend --no-edit --author="Frank Wang <yf.frank.wang@outlook.com>"
 	git rebase --continue
 
-### .gitignore ignore all files except one
-	/cache/*
-	!/cache/index.html
+### date
+	git rebase --committer-date-is-author-date <SHA>
 
 
  filter-branch
@@ -115,6 +123,9 @@
 ### remove empty commits
 	git filter-branch --prune-empty HEAD
 
+### change author and committer
+	git filter-branch -f --env-filter "GIT_AUTHOR_NAME='ou'; GIT_AUTHOR_EMAIL='ou@example.com'; GIT_COMMITTER_NAME='ou'; GIT_COMMITTER_EMAIL='ou@example.com';" HEAD
+
 
  submodule
 ------------------------------------
@@ -127,6 +138,8 @@
 	git config --file=.gitmodules submodule.Submod.branch Develop
 	git submodule sync
 	git submodule update --init --recursive --remote
+	git submodule update --recursive --remote
+	git submodule update --remote --merge
 
 
  history
