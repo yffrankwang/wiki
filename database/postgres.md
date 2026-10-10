@@ -1,13 +1,13 @@
 ### initialize db
 ```sh
-initdb -D /data/pgsql/16 -U postgres --locale=C --encoding=UTF8
+initdb -D D:\Develop\Database\pgsql18 -U postgres --locale=C --encoding=UTF8
 ```
 
 ### pg_upgrade
 change old/new pg_hba.conf METHOD to trust.
 
 ```bat
-pg_upgrade.exe --old-datadir D:\Develop\Database\pgsql13 --new-datadir D:\Develop\Database\pgsql16 --old-bindir D:\Develop\Servers\pgsql-13.3\bin --new-bindir D:\Develop\Servers\pgsql-16.3\bin -U postgres
+pg_upgrade.exe --old-datadir D:\Develop\Database\pgsql16 --new-datadir D:\Develop\Database\pgsql18 --old-bindir D:\Develop\Servers\pgsql-16.3\bin --new-bindir D:\Develop\Servers\pgsql-18.6\bin -U postgres
 ```
 
 ### pgvector
@@ -45,23 +45,28 @@ CREATE ROLE mysuperuser2 WITH SUPERUSER CREATEDB CREATEROLE LOGIN ENCRYPTED PASS
 
 ### backup
 ```sh
-pg_dump database_name > backup.sql
-pg_dump -Ft database_name > backup.tar
-pg_dump -Fc database_name > backup.dmp
+pg_dump -d database_name     -f backup.sql
+pg_dump -d database_name -Ft -f backup.tar
+pg_dump -d database_name -Fc -f backup.dmp
 
 # schema-only
-pg_dump -U postgres -s foo > schema-only.sql
+pg_dump -U postgres -s foo -f schema-only.sql
 
 # data-only
-pg_dump -U postgres -a foo > data-only.sql
+pg_dump -U postgres -a foo -f data-only.sql
+
+# specific schema
+pg_dump -U postgres -d database_name -n schema_name     -f schema-backup.sql
+pg_dump -U postgres -d database_name -n schema_name -Fc -f schema-backup.dump
+
 ```
 
 
 ### restore
 ```sh
-psql database_name < backup.sql
-pg_restore -d database_name -Ft -c backup.tar
-pg_restore -d database_name -Fc -c backup.dmp
+psql -d database_name -f backup.sql
+pg_restore -d database_name -Ft backup.tar
+pg_restore -d database_name -Fc backup.dmp
 pg_restore --verbose --clean --no-acl --no-owner -d database_name backup.dmp
 ```
 

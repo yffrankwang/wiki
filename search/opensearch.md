@@ -3,12 +3,12 @@
 ### OpenSearch
 ```sh
 # x64
-wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.11.1/opensearch-2.11.1-linux-x64.deb
-sudo dpkg -i opensearch-dashboards-2.11.1-linux-x64.deb
+wget https://artifacts.opensearch.org/releases/bundle/opensearch/3.7.0/opensearch-3.7.0-linux-x64.deb
+sudo env OPENSEARCH_INITIAL_ADMIN_PASSWORD=admin dpkg -i opensearch-dashboards-3.7.0-linux-x64.deb
 
 # arm64
-wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.11.1/opensearch-2.11.1-linux-arm64.deb
-sudo dpkg -i opensearch-2.11.1-linux-arm64.deb
+wget https://artifacts.opensearch.org/releases/bundle/opensearch/3.7.0/opensearch-3.7.0-linux-arm64.deb
+sudo env OPENSEARCH_INITIAL_ADMIN_PASSWORD=admin dpkg -i opensearch-3.7.0-linux-arm64.deb
 
 sudo systemctl daemon-reload
 sudo systemctl enable opensearch
@@ -27,12 +27,12 @@ discovery.seed_hosts: ["0.0.0.0"]
 ### OpenSearch Dashboard
 ```sh
 # x64
-wget https://artifacts.opensearch.org/releases/bundle/opensearch-dashboards/2.11.1/opensearch-dashboards-2.11.1-linux-x64.deb
-sudo dpkg -i opensearch-dashboards-2.11.1-linux-x64.deb
+wget https://artifacts.opensearch.org/releases/bundle/opensearch-dashboards/3.7.0/opensearch-dashboards-3.7.0-linux-x64.deb
+sudo dpkg -i opensearch-dashboards-3.7.0-linux-x64.deb
 
 # arm64
-wget https://artifacts.opensearch.org/releases/bundle/opensearch-dashboards/2.11.1/opensearch-dashboards-2.11.1-linux-arm64.deb
-sudo dpkg -i opensearch-dashboards-2.11.1-linux-arm64.deb
+wget https://artifacts.opensearch.org/releases/bundle/opensearch-dashboards/3.7.0/opensearch-dashboards-3.7.0-linux-arm64.deb
+sudo dpkg -i opensearch-dashboards-3.7.0-linux-arm64.deb
 
 sudo systemctl daemon-reload
 sudo systemctl enable opensearch-dashboards

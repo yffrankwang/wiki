@@ -5,6 +5,10 @@ https://help.ubuntu.com/community/IptablesHowTo
 
 ### remove all rules
 	sudo iptables -F
+	sudo iptables -P INPUT ACCEPT
+	sudo iptables -P OUTPUT ACCEPT
+	sudo iptables -P FORWARD ACCEPT
+	sudo netfilter-persistent save
 
 ### blocking null packets
 	sudo iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP

@@ -18,7 +18,11 @@ sh vpnsetup.sh
 
 wget https://git.io/ikev2setup -O ikev2.sh
 sudo bash ikev2.sh --auto
+```
 
+### Uninstall
+```sh
+wget https://get.vpnsetup.net/unst -O unst.sh && sudo bash unst.sh
 ```
 
 ### Configuration
